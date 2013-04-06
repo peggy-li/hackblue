@@ -6,7 +6,7 @@
 
 		<!-- styles -->
 		<link href="css/bootstrap.css" rel="stylesheet">
-    <link href="css/bootstrap-responsive.css" rel="stylesheet">
+    	<link href="css/bootstrap-responsive.css" rel="stylesheet">
 		<style>
 			body {
       	padding-bottom: 40px;
@@ -15,28 +15,44 @@
 
     	/* CUSTOMIZE THE NAVIGATION BAR */
 
-    	.navbar {
-    		padding-bottom: 40px;
-    	}
+			.navbar{
+				margin: 20px 40px;
+				border: 0;
+			}    	
+
+			.navbar .nav li a {
+				padding: 10px 20px;
+				font-weight: 500;
+				font-size: 110%;
+			}
 
     	/* Customize the navigation bar dropdown menu */
 
-    	.dropdown-menu li > a {
+    	.dropdown-menu li a {
     		padding: 4px 20px;
     	}
 
+    	/* CUSTOMIZE THE CAROUSEL */
+    	.carousel-control {
+	      margin: 0px 40px;
+	      font-size: 120px;
+	      color: black;
+	      background-color: transparent;
+	      border: 0;
+	      z-index: 10;
+    	}
 
+    	.carousel-control:hover,
+			.carousel-control:focus {
+				color: gray;
+  			text-decoration: none;
+  			opacity: 1.0;
+			}
 
     	/* CUSTOMIZE FEATURED EVENTS PANEL */
 
     	.featured {
-    		margin-top: 60px;
-    		margin-bottom: 40px;
     		text-align: center;
-    	}
-
-    	.featured .span4 {
-    		background-color: green;
     	}
 
 		</style>
@@ -46,7 +62,7 @@
 	<body>
 
 		<!-- navbar -->
-		<div class="navbar navbar-fixed-top">
+		<div class="navbar">
   		<div class="navbar-inner">
     		<ul class="nav">
     			<li><a href="index.html">Home</a></li>
@@ -69,12 +85,41 @@
   		</div> <!-- /.navbar-inner-->
 		</div> <!-- /.navbar>
 
-		<!-- hero unit -->
 
+		<!-- carousel using hero -->
+		<div id="myCarousel" class="carousel slide">
+      <div class="carousel-inner">
+        <div class="item active container">
+        	<div class="hero-unit">
+        		<h1>Heading goes here</h1>
+        		<p>EventDevil makes it easy to find events on Facebook.</p>
+				<p><a class="btn btn-large btn-primary" href="about.html">Learn more</a></p>
+        	</div> <!-- /.hero-unit -->
+        </div> <!-- /.item -->
+        <div class="item container">
+        	<div class="hero-unit">
+        		<h1>Browsing is fun and easy!</h1>
+        		<p>Search for upcoming events or filter events by organization name.</p>
+        		<p><a class="btn btn-large btn-primary">Browse now</a></p>
+        	</div> <!-- /.hero-unit -->
+        </div> <!-- /.item -->
+      </div>
+      <a class="left carousel-control" href="#myCarousel" data-slide="prev">&lsaquo;</a>
+      <a class="right carousel-control" href="#myCarousel" data-slide="next">&rsaquo;</a>
+    </div>
+
+		<!-- action buttons -->
+		<div class="container">
+      <p class="pagination-centered">
+        <!-- <button class="btn btn-large btn-primary" type="button">Browse events</button> -->
+        <button class="btn btn-large btn-primary" type="button">Add an event</button>
+      </p>
+    </div>
 
 
 		<!-- featured events -->
 		<div class="container featured">
+			<h1 class="text-left">Featured events</h1><hr>
 			<div class="row-fluid">
 	 		 	<div class="span4">
 	 		 		<img data-src="holder.js/300x180" alt="">
@@ -93,20 +138,18 @@
 			</div> <!-- /.row -->
 		</div> <!-- /.featured -->
 
-		<!-- action buttons -->
-		<div class="container">
-      <p class="pagination-centered">
-        <button class="btn btn-large btn-primary" type="button">Browse events</button>
-        <button class="btn btn-large btn-primary" type="button">Add an event</button>
-      </p>
-    </div>
 
-
-		<!-- description -->
-		<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. </p>
-
+		<!-- scripts -->
 		<script src="js/jquery.js"></script>
     <script src="js/bootstrap.js"></script>
     <script src="js/holder.js"></script>
+    <script>
+      !function ($) {
+        $(function(){
+          // carousel demo
+          $('#myCarousel').carousel()
+        })
+      }(window.jQuery);
+    </script>
 	</body>
 </html>
