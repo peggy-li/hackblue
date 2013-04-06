@@ -3,3 +3,8 @@
 .project
 .settings/
 
+# Generated WAR files
+#war/eventdevil
+#war/WEB-INF/classes/
+#war/WEB-INF/deploy/
+
