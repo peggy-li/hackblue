@@ -63,59 +63,75 @@
 
 		<!-- navbar -->
 		<div class="navbar">
-  		<div class="navbar-inner">
-    		<ul class="nav">
-    			<li><a href="index.html">Home</a></li>
-    			<li><a href="about.html">About</a></li>
-
-    			<li class="dropdown">
-    				<a href="#" class="dropdown-toggle" data-toggle="dropdown">Browse Events</a>
-    				<ul class="dropdown-menu">
-    					<li><a href="#">Browse by date</a></li>
-    					<li><a href="#">Browse by organization</a></li>
-    				</ul>
-    			</li>
-    		</ul> <!-- /.nav --> 
-
+	  		<div class="navbar-inner">
+	    		<ul class="nav">
+	    			<li><a href="index.html">Home</a></li>
+	    			<li><a href="about.html">About</a></li>
+	    			<li class="dropdown">
+	    				<a href="#" class="dropdown-toggle" data-toggle="dropdown">Browse Events</a>
+	    				<ul class="dropdown-menu">
+	    					<li><a href="#">Browse by date</a></li>
+	    					<li><a href="#">Browse by organization</a></li>
+	    				</ul> <!-- /.dropdown-menu -->
+	    			</li> <!-- /.dropdown -->
+	    		</ul> <!-- /.nav --> 
 				<!-- Search bar -->
-	  		<form class="navbar-search pull-right">
-	 				<input type="text" class="search-query" placeholder="Search events">
-	  			<button type="submit" class="btn">Search</button>
+		  		<form class="navbar-search pull-right">
+		 			<input type="text" class="search-query" placeholder="Search events">
+		  			<button type="submit" class="btn">Search</button>
 				</form>
-  		</div> <!-- /.navbar-inner-->
+	  		</div> <!-- /.navbar-inner-->
 		</div> <!-- /.navbar>
 
 
 		<!-- carousel using hero -->
 		<div id="myCarousel" class="carousel slide">
-      <div class="carousel-inner">
-        <div class="item active container">
-        	<div class="hero-unit">
-        		<h1>Heading goes here</h1>
-        		<p>EventDevil makes it easy to find events on Facebook.</p>
-				<p><a class="btn btn-large btn-primary" href="about.html">Learn more</a></p>
-        	</div> <!-- /.hero-unit -->
-        </div> <!-- /.item -->
-        <div class="item container">
-        	<div class="hero-unit">
-        		<h1>Browsing is fun and easy!</h1>
-        		<p>Search for upcoming events or filter events by organization name.</p>
-        		<p><a class="btn btn-large btn-primary">Browse now</a></p>
-        	</div> <!-- /.hero-unit -->
-        </div> <!-- /.item -->
-      </div>
-      <a class="left carousel-control" href="#myCarousel" data-slide="prev">&lsaquo;</a>
-      <a class="right carousel-control" href="#myCarousel" data-slide="next">&rsaquo;</a>
-    </div>
+      	<div class="carousel-inner">
+        		<div class="item active container">
+        			<div class="hero-unit">
+        				<h1>Heading goes here</h1>
+        				<p>EventDevil makes it easy to find events on Facebook.</p>
+						<p><a class="btn btn-large btn-primary" href="about.html">Learn more</a></p>
+        			</div> <!-- /.hero-unit -->
+        		</div> <!-- /.item active container -->
+        		<div class="item container">
+        			<div class="hero-unit">
+        				<h1>Browsing is fun and easy!</h1>
+        				<p>Search for upcoming events or filter events by organization name.</p>
+        				<p><a class="btn btn-large btn-primary">Browse now</a></p>
+        			</div> <!-- /.hero-unit -->
+        		</div> <!-- /.item container -->
+      	</div> <!-- carousel-inner -->
+      	<a class="left carousel-control" href="#myCarousel" data-slide="prev">&lsaquo;</a>
+      	<a class="right carousel-control" href="#myCarousel" data-slide="next">&rsaquo;</a>
+    	</div> <!-- carousel -->
 
 		<!-- action buttons -->
 		<div class="container">
-      <p class="pagination-centered">
-        <!-- <button class="btn btn-large btn-primary" type="button">Browse events</button> -->
-        <button class="btn btn-large btn-primary" type="button">Add an event</button>
-      </p>
-    </div>
+	      <p class="pagination-centered">
+	        <!-- <button class="btn btn-large btn-primary" type="button">Browse events</button> -->
+	        <!-- Button to trigger modal -->
 
+	        <a href="#addEventModal" role="button" class="btn btn-large btn-primary" data-toggle="modal">Add Event</a>
+			
+				<!-- Modal -->
+				<div id="addEventModal" class="modal hide fade" tabindex="-1" role="dialog">
+					<form id="modal-form" method="post" action="jsp/addEvent.jsp">
+						<div class="modal-header">
+	       				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+	       				<h3>Add Event</h3>
+	       			</div>
+	       			<div class="modal-body">
+	       				<input class="input-large" type="url" name="eventURL" placeholder="Event URL" required="required" />
+	       			</div>
+	       			<div class="modal-footer">
+	       				<button class="btn" data-dismiss="modal">Cancel</button>
+	       				<input class="btn btn-primary" type="submit" value="Add Event"/>
+	       			</div>
+	       		</form>
+	       	</div> <!-- /.model -->
+	      </p>
+    	</div> <!-- /.container -->
 
 		<!-- featured events -->
 		<div class="container featured">
@@ -138,12 +154,11 @@
 			</div> <!-- /.row -->
 		</div> <!-- /.featured -->
 
-
-		<!-- scripts -->
-		<script src="js/jquery.js"></script>
-    <script src="js/bootstrap.js"></script>
-    <script src="js/holder.js"></script>
-    <script>
+	<!-- scripts -->
+	<script src="js/jquery.js"></script>
+   <script src="js/bootstrap.js"></script>
+   <script src="js/holder.js"></script>
+   <script>
       !function ($) {
         $(function(){
           // carousel demo
