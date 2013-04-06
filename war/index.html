@@ -102,18 +102,20 @@
 		<a href="#addEventModal" role="button" class="btn btn-large btn-primary" data-toggle="modal">Add Event</a>
 		
 		<!-- Modal -->
-		<div id="addEventModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="addEvent" aria-hidden="true">
-			<div class="modal-header">
-       			<button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
-       			<h3>Add Event</h3>
-       		</div>
-       		<div class="modal-body">
-       			<input class="input-large" type="text" placeholder="Event URL">
-       		</div>
-       		<div class="modal-footer">
-       			<button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
-       			<button class="btn btn-primary">Add</button>
-       		</div>
+		<div id="addEventModal" class="modal hide fade" tabindex="-1" role="dialog">
+			<form id="modal-form" method="post" action="jsp/addEvent.jsp">
+				<div class="modal-header">
+       				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+       				<h3>Add Event</h3>
+       			</div>
+       			<div class="modal-body">
+       				<input class="input-large" type="url" name="eventURL" placeholder="Event URL" required="required" />
+       			</div>
+       			<div class="modal-footer">
+       			<button class="btn" data-dismiss="modal">Cancel</button>
+       			<input class="btn btn-primary" type="submit" value="Add Event"/>
+       			</div>
+       		</form>
        </div>
     </div>
 
