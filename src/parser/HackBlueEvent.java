@@ -1,22 +1,27 @@
+package parser;
+
 public class HackBlueEvent {
-	private String id;
-	private String owner;
-	private String name;
-	private String description;
-	private String start_time;
-	private String end_time;
-	private String location;
-	// list for venue;
+	
+	private String url = "";
+	private String id = "";
+	private Owner owner;
+	private String name = "";
+	private String description = "";
+	private String start_time = "";
+	private String end_time = "";
+	private String location = "";
+	private Venue venue;
+	private String privacy = "";
+	private Picture picture;
+	
+	public HackBlueEvent() {}
 
-	private String privacy;
-	private String picture;
-
-	public String getid() {
+	public String getID() {
 		return id;
 	}
 
 	public String getOwner() {
-		return owner;
+		return owner.name;
 	}
 
 	public String getName() {
@@ -24,7 +29,7 @@ public class HackBlueEvent {
 	}
 
 	public String getDescription() {
-		return decription;
+		return description;
 	}
 
 	public String getStart_time() {
@@ -38,8 +43,48 @@ public class HackBlueEvent {
 	public String getLocation() {
 		return location;
 	}
-
-	public HackBlueEvent() {
+	
+	public String getVenue() {
+		return venue.name;
 	}
-
+	
+	public String getPrivacy() {
+		return privacy;
+	}
+	
+	public String getPicture() {
+		return picture.data.url;
+	}
+	
+	public String getURL() {
+		return url;
+	}
+	
+	public static class Owner {
+		private String name = "";
+		private String id = "";
+		
+		public Owner() {}
+	}
+	
+	public static class Venue {
+		private String name = "";
+		
+		public Venue() {}
+	}
+	
+	public static class Picture {
+		private Data data;
+		
+		public Picture() {}
+	}
+	
+	public static class Data {
+		private String url = "";
+		private boolean is_silhouette = false;
+		
+		public Data() {}
+	}
+	
+	
 }
