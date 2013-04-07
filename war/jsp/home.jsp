@@ -157,21 +157,22 @@
 	        	<div class="item active">
 	        		<div class="hero-unit">
 	        			<h2>Finding events should be fun, not frustrating.</h2>
-	        			<p>EventDevil makes it easy to find events on Facebook.</p>
+						<!-- <p>EventDevil makes it easy to share and find events.</p> -->
+						<p>Tired of missing out on events or combing through incomplete listservs or the Duke Events Calendar? We're here to help you find and share events.</p>
 						<p><a class="btn btn-large btn-primary" href="about.jsp">Learn more</a></p>
 	        		</div> <!-- /.hero-unit -->
 	        	</div> <!-- /.item -->
 	        	<div class="item">
 	        		<div class="hero-unit">
-	        			<h2>Browsing is fun and easy!</h2>
-	        			<p>Search for upcoming events or filter events by organization name.</p>
-	        			<p><a href="events.jsp" class="btn btn-large btn-primary">Browse now</a></p>
+	        			<h2>Browsing is easy and intuitive.</h2>
+						<p>Sort upcoming events by popularity and timeframe or search for events using tag filters. Get results that show you an overview of the event with a link to RSVP on Facebook.</p>	        			<p><a href="events.jsp" class="btn btn-large btn-primary">Browse now</a></p>
 	        		</div> <!-- /.hero-unit -->
 	        	</div> <!-- /.item -->
 	        	<div class="item">
 	        		<div class="hero-unit">
-	        			<h2>Your contributions matter.</h2>
-	        			<p>Our success depends on our users submitting events. By submitting an event to our database, you have the chance to share it with many more people.</p>
+	        			<h2>We place you at the center of the event.</h2>
+	        			<!-- <p>Our success depends on our users submitting events. By submitting an event to our database, you have the chance to share it with many more people.</p> -->
+	        			<p>You submit events that you think other people would be interested in, and you find and attend events that others share. Call it crowdsourcing, call it amazing.</p>
 	        			<p><a href="#addEventModal" class="btn btn-large btn-primary" data-toggle="modal">Add an event now</a></p>
 	        		</div>
 	        	</div>
@@ -209,10 +210,9 @@
 		</div> <!-- /.featured -->
 
 
-
 		<!-- Modal for adding event -->
 		<div id="addEventModal" class="modal hide fade" tabindex="-1" role="dialog">
-			<form id="modal-form" method="post" action="addEvent.jsp">
+			<form id="modal-form" name="modal-form" method="post" action="addEvent.jsp">
 				<div class="modal-header">
    					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
    					<h3>Add Event</h3>
@@ -220,6 +220,49 @@
    				<div class="modal-body">
    					<input class="input-semi-large" type="url" name="eventURL" placeholder="Event URL" required="required" />
    					<p>Note: URL must be in the form http://www.facebook.com/events/123456789</p>
+   					<div class="control-group">
+    					<p class="pull-left">Add tags (choose up to 3): </p>
+    					<div class="controls span2">
+        					<label class="checkbox">
+            					<input type="checkbox" name="tags[]" value="academic" onchange='checkLen(this);'> Academic
+        					</label>
+       						<label class="checkbox">
+            					<input type="checkbox" name="tags[]" value="arts" onchange='checkLen(this);'> Arts
+        					</label>
+        					<label class="checkbox">
+            					<input type="checkbox" name="tags[]" value="career" onchange='checkLen(this);'> Career
+        					</label>
+        					<label class="checkbox">
+            					<input type="checkbox" name="tags[]" value="compsci" onchange='checkLen(this);'> Compsci
+        					</label>
+        					<label class="checkbox">
+            					<input type="checkbox" name="tags[]" value="fundraiser" onchange='checkLen(this);'> Fundraiser
+        					</label>
+        					<label class="checkbox">
+            					<input type="checkbox" name="tags[]" value="sports" onchange='checkLen(this);'> Sports
+        					</label>
+    					</div> <!-- /.controls -->
+    					<div class="controls span2">
+    					    <label class="checkbox">
+            					<input type="checkbox" name="tags[]" value="social" onchange='checkLen(this);'> Social
+        					</label>
+        					<label class="checkbox">
+            					<input type="checkbox" name="tags[]" value="dsg" onchange='checkLen(this);'> DSG
+        					</label>
+       						<label class="checkbox">
+            					<input type="checkbox" name="tags[]" value="freshmen" onchange='checkLen(this);'> Freshmen
+        					</label>
+        					<label class="checkbox">
+            					<input type="checkbox" name="tags[]" value="sophomores" onchange='checkLen(this);'> Sophomores
+        					</label>
+        					<label class="checkbox">
+            					<input type="checkbox" name="tags[]" value="juniors" onchange='checkLen(this);'> Juniors
+        					</label>
+        					<label class="checkbox">
+            					<input type="checkbox" name="tags[]" value="seniors" onchange='checkLen(this);'> Seniors
+        					</label>
+    					</div> <!-- /.controls -->
+    				</div> <!--  /.control-group -->
    				</div>
    				<div class="modal-footer">
    					<button class="btn" data-dismiss="modal">Cancel</button>
