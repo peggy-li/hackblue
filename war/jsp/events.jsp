@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1" %>
-<%@ page import="java.util.List, java.util.ArrayList, extractor.EventExtractor, com.google.appengine.api.datastore.*" %>
+<%@ page import="java.util.Date, org.joda.time.format.ISODateTimeFormat, org.joda.time.DateTime, java.util.List, java.util.ArrayList, extractor.EventExtractor, com.google.appengine.api.datastore.*" %>
 <%@ page session="false" %>
 
 <!DOCTYPE html>
@@ -100,6 +100,12 @@
 				out.print("<p>No events found.</p>");
 			}
 			for (Entity event : events) {
+				// don't display old events
+				DateTime d2 = ISODateTimeFormat.dateTimeNoMillis().parseDateTime((String) event.getProperty("end_time"));
+				DateTime d1 = new DateTime(new Date());
+				if (d1.getMillis() > d2.getMillis()){
+				continue;
+				}
 %>
 			<div class="event row-fluid">
 				<div class="left">
