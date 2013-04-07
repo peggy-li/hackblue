@@ -12,11 +12,12 @@ import com.google.appengine.api.datastore.DatastoreServiceFactory;
 import com.google.appengine.api.datastore.Entity;
 import com.google.appengine.api.datastore.FetchOptions;
 import com.google.appengine.api.datastore.Query;
+import com.google.appengine.api.datastore.Query.SortDirection;
 
 public class EventExtractor {
 	
 	public static List<Entity> retrieve() {
-		Query query = new Query("event").addSort("start_time", Query.SortDirection.DESCENDING);
+		Query query = new Query("event").addSort("start_time", SortDirection.ASCENDING);
 		DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
 		List<Entity> events = datastore.prepare(query).asList(FetchOptions.Builder.withLimit(50));
 		return events;
