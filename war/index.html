@@ -6,25 +6,29 @@
 
 		<!-- styles -->
 		<link href="css/bootstrap.css" rel="stylesheet">
-    	<link href="css/bootstrap-responsive.css" rel="stylesheet">
+    		<link href="css/bootstrap-responsive.css" rel="stylesheet">
 		<style>
-			body {
-      	padding-bottom: 40px;
-      	color: #5a5a5a;
+		body {
+      		padding: 20px 40px;
+      		color: #5a5a5a;
     	}
 
     	/* CUSTOMIZE THE NAVIGATION BAR */
 
-			.navbar{
-				margin: 20px 40px;
-				border: 0;
-			}    	
+		.navbar{
+			margin: 0 15px;
+			padding: 10px 0;
+		}    
 
-			.navbar .nav li a {
-				padding: 10px 20px;
-				font-weight: 500;
-				font-size: 110%;
-			}
+		.navbar .nav li {
+			padding: 2px;
+		}
+
+		.navbar .nav li a {
+			padding: 10px 20px;
+			font-weight: 500;
+			font-size: 110%;
+		}
 
     	/* Customize the navigation bar dropdown menu */
 
@@ -34,7 +38,7 @@
 
     	/* CUSTOMIZE THE CAROUSEL */
     	.carousel-control {
-	      margin: 0px 40px;
+	      margin: 0px 10px;
 	      font-size: 120px;
 	      color: black;
 	      background-color: transparent;
@@ -43,11 +47,19 @@
     	}
 
     	.carousel-control:hover,
-			.carousel-control:focus {
-				color: gray;
+		.carousel-control:focus {
+			color: gray;
   			text-decoration: none;
   			opacity: 1.0;
-			}
+		}
+
+		.hero-unit h2 {
+			margin-bottom: 20px;
+			color: #0F4DA8;
+			font-size: 48px;
+			line-height: 1;
+  			letter-spacing: -2px;
+		}
 
     	/* CUSTOMIZE FEATURED EVENTS PANEL */
 
@@ -55,12 +67,15 @@
     		text-align: center;
     	}
 
+    	.featured img {
+    		width: 400px;
+    	}
+
 		</style>
 
 	</head>
 
 	<body>
-
 		<!-- navbar -->
 		<div class="navbar">
 	  		<div class="navbar-inner">
@@ -68,12 +83,15 @@
 	    			<li><a href="index.html">Home</a></li>
 	    			<li><a href="about.html">About</a></li>
 	    			<li class="dropdown">
-	    				<a href="#" class="dropdown-toggle" data-toggle="dropdown">Browse Events</a>
+	    				<!-- <a href="events.html" class="dropdown-toggle" data-toggle="dropdown">Browse Events</a> -->
+	    				<a href="events.html" class="dropdown-toggle" data-toggle="dropdown">Browse events<b class="caret"></b></a>
 	    				<ul class="dropdown-menu">
+	    					<li><a href="events.html">Browse all events</a></li>
 	    					<li><a href="#">Browse by date</a></li>
 	    					<li><a href="#">Browse by organization</a></li>
 	    				</ul> <!-- /.dropdown-menu -->
 	    			</li> <!-- /.dropdown -->
+	    			<li><a href="#addEventModal" data-toggle="modal">Add an event</a>
 	    		</ul> <!-- /.nav --> 
 				<!-- Search bar -->
 		  		<form class="navbar-search pull-right">
@@ -89,16 +107,16 @@
       	<div class="carousel-inner">
         		<div class="item active container">
         			<div class="hero-unit">
-        				<h1>Heading goes here</h1>
+        				<h2>Heading goes here</h2>
         				<p>EventDevil makes it easy to find events on Facebook.</p>
 						<p><a class="btn btn-large btn-primary" href="about.html">Learn more</a></p>
         			</div> <!-- /.hero-unit -->
         		</div> <!-- /.item active container -->
         		<div class="item container">
         			<div class="hero-unit">
-        				<h1>Browsing is fun and easy!</h1>
+        				<h2>Browsing is fun and easy!</h2>
         				<p>Search for upcoming events or filter events by organization name.</p>
-        				<p><a class="btn btn-large btn-primary">Browse now</a></p>
+        				<p class="pagination-right"><a class="btn btn-large btn-primary">Browse now</a></p>
         			</div> <!-- /.hero-unit -->
         		</div> <!-- /.item container -->
       	</div> <!-- carousel-inner -->
@@ -108,29 +126,27 @@
 
 		<!-- action buttons -->
 		<div class="container">
-	      <p class="pagination-centered">
-	        <!-- <button class="btn btn-large btn-primary" type="button">Browse events</button> -->
+	      	<p class="pagination-centered">
 	        <!-- Button to trigger modal -->
-
-	        <a href="#addEventModal" role="button" class="btn btn-large btn-primary" data-toggle="modal">Add Event</a>
+	        <a href="#addEventModal" role="button" class="btn btn-large btn-primary" data-toggle="modal">Add an event</a>
 			
 				<!-- Modal -->
 				<div id="addEventModal" class="modal hide fade" tabindex="-1" role="dialog">
 					<form id="modal-form" method="post" action="jsp/addEvent.jsp">
 						<div class="modal-header">
-	       				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
-	       				<h3>Add Event</h3>
-	       			</div>
-	       			<div class="modal-body">
-	       				<input class="input-large" type="url" name="eventURL" placeholder="Event URL" required="required" />
-	       			</div>
-	       			<div class="modal-footer">
-	       				<button class="btn" data-dismiss="modal">Cancel</button>
-	       				<input class="btn btn-primary" type="submit" value="Add Event"/>
-	       			</div>
-	       		</form>
-	       	</div> <!-- /.model -->
-	      </p>
+	       					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+	       					<h3>Add Event</h3>
+	       				</div>
+	       				<div class="modal-body">
+	       					<input class="input-large" type="url" name="eventURL" placeholder="Event URL" required="required" />
+	       				</div>
+	       				<div class="modal-footer">
+	       					<button class="btn" data-dismiss="modal">Cancel</button>
+	       					<input class="btn btn-primary" type="submit" value="Add Event"/>
+	       				</div>
+	       			</form>
+	       		</div> <!-- /.modal -->
+	     	</p>
     	</div> <!-- /.container -->
 
 		<!-- featured events -->
@@ -138,17 +154,17 @@
 			<h1 class="text-left">Featured events</h1><hr>
 			<div class="row-fluid">
 	 		 	<div class="span4">
-	 		 		<img data-src="holder.js/300x180" alt="">
+	 		 		<img data-src="holder.js/320x180" alt="">
 	 		 		<p>First event goes here</p>
 	 		 	</div> <!-- first event -->
 	  		
 	  		<div class="span4">
-	  			<img data-src="holder.js/300x180" alt="">
+	  			<img data-src="holder.js/320x180" alt="">
 	  			<p>Second event goes here</p>
 	  		</div> <!-- second event -->
 	  		
 	  		<div class="span4">
-	  			<img data-src="holder.js/300x180" alt="">
+	  			<img data-src="holder.js/320x180" alt="">
 	  			<p>Third event goes here</p>
 	  		</div> <!-- third event -->
 			</div> <!-- /.row -->
@@ -156,15 +172,15 @@
 
 	<!-- scripts -->
 	<script src="js/jquery.js"></script>
-   <script src="js/bootstrap.js"></script>
-   <script src="js/holder.js"></script>
-   <script>
-      !function ($) {
+	<script src="js/bootstrap.js"></script>
+   	<script src="js/holder.js"></script>
+   	<script>
+      	!function ($) {
         $(function(){
-          // carousel demo
-          $('#myCarousel').carousel()
+          	// carousel demo
+          	$('#myCarousel').carousel()
         })
-      }(window.jQuery);
+     	}(window.jQuery);
     </script>
 	</body>
 </html>
