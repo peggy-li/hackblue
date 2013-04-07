@@ -15,7 +15,8 @@
 
 <%
 	String eventURL = request.getParameter("eventURL");
-	EventParser.parse(eventURL);
+	String[] tags = request.getParameterValues("tags[]");
+	EventParser.parse(eventURL, tags);
 	response.sendRedirect("events.jsp");
 %>
 

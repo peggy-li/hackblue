@@ -6,6 +6,7 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.Arrays;
 import java.util.Date;
 
 import com.google.appengine.api.datastore.DatastoreService;
@@ -23,7 +24,7 @@ public class EventParser {
 	private static final String FIELDS = "id,owner,name,description,start_time,end_time,location,venue,privacy,picture.type(large)";
 	private static final String QUERY = "fql?q=SELECT+all_members_count,+attending_count+FROM+event+WHERE+eid=";
 	
-	public static void parse(String eventURL) throws MalformedURLException, IOException {
+	public static void parse(String eventURL, String[] tags) throws MalformedURLException, IOException {
 		// parse event ID
 		String eventID = parseEventID(eventURL);
 		if (eventID == null) {
@@ -42,7 +43,7 @@ public class EventParser {
 	    EventSummary tempSummary = sendQueryRequest(queryURL);
 	    
 	    // parse JSON graph response into event entity using GSON
-	    Entity event = createEntity(tempEvent, tempSummary, eventURL);
+	    Entity event = createEntity(eventURL, tempEvent, tempSummary, tags);
 
 		// store event entity in datastore
         DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
@@ -97,7 +98,7 @@ public class EventParser {
 	    return tempEvent;
 	}
 	
-	private static Entity createEntity(Event tempEvent, EventSummary tempSummary, String eventURL) {
+	private static Entity createEntity(String eventURL, Event tempEvent, EventSummary tempSummary, String[] tags) {
         Entity event = new Entity("event", tempEvent.getID());
         
         // store URL and timestamp of datastore transaction
@@ -119,6 +120,12 @@ public class EventParser {
         // store event summary properties
         event.setProperty("all_members_count", tempSummary.getAllMembersCount());
         event.setProperty("attending_count", tempSummary.getAttendingCount());
+        
+        // store tags
+        if (tags != null && tags.length > 0) {
+        	event.setProperty("tags", Arrays.asList(tags));
+        }
+
         return event;
 	}
 }
