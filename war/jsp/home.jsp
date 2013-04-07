@@ -81,7 +81,15 @@
 		    				<a href="events.jsp" class="dropdown-toggle" data-toggle="dropdown">Browse events<b class="caret"></b></a>
 		    				<ul class="dropdown-menu">
 		    					<li><a href="events.jsp">Browse all events</a></li>
-		    					<li><a href="#">Browse by date</a></li>
+		    					<li class="dropdown-submenu">
+		    						<a tabindex="-1" href="#">Browse by date</a>
+		    						<ul class="dropdown-menu">
+		    							<li><a tabindex="-1" href="#">Today</a></li>
+		    							<li><a tabindex="-1" href="#">Within 1 week</a></li>
+		    							<li><a tabindex="-1" href="#">Within 2 weeks</a></li>
+		    							<li><a tabindex="-1" href="#">After 2 weeks</a></li>
+		    						</ul>
+		    					</li><!--/.dropdown-submenu for date -->
 		    					<li><a href="#">Browse by organization</a></li>
 		    				</ul> <!-- /.dropdown-menu -->
 		    			</li> <!-- /.dropdown -->
@@ -133,15 +141,23 @@
 			<div class="row-fluid">
 <%
 				List<Entity> events = EventExtractor.retrieve("attending_count", "descending", 4);
-				for (Entity event: events){
+				if (events == null || events.size() == 0) {
 %>
-	 		 	<div class="span3">
-	 		 		<img src=<%=event.getProperty("picture") %> class="img-polaroid">
-	 		 		<p><a href=<%=event.getProperty("url") %>><%=event.getProperty("name") %></a></p>
-	 		 	</div> <!-- event -->
+					<p>There are currently no events. Why don't you add one now?</p>
+<%				}
+
+				else {
+					for (Entity event: events){
+%>
+		 		 	<div class="span3">
+		 		 		<img src=<%=event.getProperty("picture") %> class="img-polaroid">
+		 		 		<p><a href=<%=event.getProperty("url") %>><%=event.getProperty("name") %></a></p>
+		 		 	</div> <!-- event -->
 
 <%
-			  	}
+				  	}
+				}
+
 %>	
 			</div> <!-- /.row -->
 		</div> <!-- /.featured -->
@@ -156,7 +172,7 @@
    					<h3>Add Event</h3>
    				</div>
    				<div class="modal-body">
-   					<input class="input-large" type="url" name="eventURL" placeholder="Event URL" required="required" />
+   					<input class="input-semi-large" type="url" name="eventURL" placeholder="Event URL" required="required" />
    					<p>Note: URL must be in the form http://www.facebook.com/events/123456789</p>
    				</div>
    				<div class="modal-footer">
