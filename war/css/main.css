@@ -13,6 +13,11 @@ body {
 	margin-top: 40px;
 }
 
+/* Between bootstrap's input xlarge and xxlarge */
+.input-semi-large {
+	width: 500px;
+}
+
 /* CUSTOMIZE NAVIGATION BAR */
 .navbar{
 	margin-top: 40px;

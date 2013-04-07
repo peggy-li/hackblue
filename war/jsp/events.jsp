@@ -79,7 +79,7 @@
 					<img src=<%=event.getProperty("picture") %> class="img-polaroid">
 				</div> <!-- /.left -->
 				<div class="right">
-					<p class="name"><a href=<%=event.getProperty("url") %>><%=event.getProperty("name") %></a></p>
+					<p class="name"><a href=<%=event.getProperty("url") %> target="_blank"><%=event.getProperty("name") %></a></p>
 					<p class="host">Created by: <%=event.getProperty("owner") %></p>
 					<p class="date"><%=EventExtractor.formatDate((String) event.getProperty("start_time")) %>
 <%
