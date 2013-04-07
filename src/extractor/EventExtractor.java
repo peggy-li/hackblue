@@ -77,7 +77,7 @@ public class EventExtractor {
 	 * @return
 	 */
 	public static List<Entity> findEventsToday(){
-		List<Entity> allEvents = retrieve();
+		List<Entity> allEvents = retrieve("start_time", "descending", 50);
 		List<Entity> result = new ArrayList<Entity>();
 		for(Entity e: allEvents){
 			if (spansToday((String) e.getProperty("start_time"), (String) e.getProperty("end_time"))){
@@ -113,12 +113,20 @@ public class EventExtractor {
 	 * @return
 	 */
 	private static boolean spansToday(String iStart, String iEnd){
+		if (iStart.equals(new String(""))){
+			return false;
+		}
 		DateTime start = ISODateTimeFormat.dateTimeNoMillis().parseDateTime(iStart);
 		DateTime d2 = new DateTime(new Date());
-		DateTime end = ISODateTimeFormat.dateTimeNoMillis().parseDateTime(iEnd);
-		return (start.getDayOfYear() == d2.getDayOfYear() && start.getYear()==d2.getYear() ||
-				(start.getDayOfYear() <= d2.getDayOfYear() && start.getYear()<=d2.getYear() &&
-				 end.getDayOfYear() >= d2.getDayOfYear() && end.getYear() >= d2.getYear()));
+		boolean condition2 = false;
+		DateTime end;
+		if (!iEnd.equals(new String(""))){
+			end = ISODateTimeFormat.dateTimeNoMillis().parseDateTime(iEnd);
+		    condition2 = (start.getDayOfYear() <= d2.getDayOfYear() && start.getYear()<=d2.getYear() &&
+					 end.getDayOfYear() >= d2.getDayOfYear() && end.getYear() >= d2.getYear());
+		}
+		boolean condition1 = start.getDayOfYear() == d2.getDayOfYear() && start.getYear()==d2.getYear() ;
+		return condition1 || condition2;
 	}
 	
 }

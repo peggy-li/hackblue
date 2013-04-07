@@ -92,9 +92,13 @@
            	// checking for parameters
 			String numWeeks = request.getParameter("upcomingWeeks");
            	String tag = request.getParameter("tag");
-			if (numWeeks != null){
+			String today = request.getParameter("today");
+           	if (numWeeks != null){
 				int tempWeeks = Integer.parseInt(numWeeks);
 				events = EventExtractor.findUpcoming(tempWeeks);
+			}
+			if (today != null){
+				events = EventExtractor.findEventsToday();
 			}
 			else if (tag != null) {
 				events = EventExtractor.filter("tags", tag, "ascending", 50);
