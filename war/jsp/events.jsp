@@ -161,7 +161,8 @@
 						ArrayList<String> allTags = (ArrayList<String>) obj;
 						out.print("Tags: ");
 						for (String t : allTags) {
-							out.print("<a href='#'>#" + t + "</a> ");
+							String tagURL = "events.jsp?tag=" + t;
+							out.print("<a href=" + tagURL + ">#" + t + "</a> ");
 						}
 					}
 %>
