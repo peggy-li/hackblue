@@ -2,6 +2,7 @@
 <%@ page import="java.util.List, extractor.EventExtractor, com.google.appengine.api.datastore.*" %>
 <%@ page session="false" %>
 
+
 <!DOCTYPE html>
 <html lang="en">
 	<head>
@@ -68,7 +69,7 @@
 	<body>
 		<div class="row-fluid">
 			<div class="span2 pagination-right">
-				<img class="logo" src="../images/logo.png" alt="">
+				<img class="logo" src="../images/logo2.png" alt="">
 			</div>
 			<div class="span10">
 				<!-- navbar -->
