@@ -101,10 +101,12 @@
 			}
 			for (Entity event : events) {
 				// don't display old events
+				if (!((String) event.getProperty("end_time")).equals("")){
 				DateTime d2 = ISODateTimeFormat.dateTimeNoMillis().parseDateTime((String) event.getProperty("end_time"));
 				DateTime d1 = new DateTime(new Date());
 				if (d1.getMillis() > d2.getMillis()){
 				continue;
+				}
 				}
 %>
 			<div class="event row-fluid">
