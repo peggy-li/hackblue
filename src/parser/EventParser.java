@@ -13,13 +13,16 @@ import com.google.appengine.api.datastore.DatastoreServiceFactory;
 import com.google.appengine.api.datastore.Entity;
 import com.google.appengine.api.datastore.Text;
 import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonParser;
 
 public class EventParser {
 	
 	private static final String BASE_URL = "https://graph.facebook.com/";
 	private static final String ACCESS_TOKEN = "356870157756071%7CZKRXp2JMaj8T6jg1nGTvRiDa1Xs";
 	private static final String FIELDS = "id,owner,name,description,start_time,end_time,location,venue,privacy,picture.type(large)";
-
+	private static final String QUERY = "fql?q=SELECT+all_members_count,+attending_count+FROM+event+WHERE+eid=";
+	
 	public static void parse(String eventURL) throws MalformedURLException, IOException {
 		// parse event ID
 		String eventID = parseEventID(eventURL);
@@ -28,20 +31,19 @@ public class EventParser {
 		}
 		
 		// make Facebook Graph API call
-		String url = buildURL(eventID);
-		InputStream response = new URL(url).openStream();
-		
-	    // parse JSON response into event entity using GSON
-	    BufferedReader br = new BufferedReader(new InputStreamReader(response, "UTF-8"));
-	    Gson gson = new Gson();
-	    HackBlueEvent tempEvent = gson.fromJson(br, HackBlueEvent.class);
-	    br.close();
-	    System.out.println(tempEvent.getPrivacy());
+		String graphURL = buildGraphURL(eventID);
+		Event tempEvent = sendGraphRequest(graphURL);;
 	    if (!tempEvent.getPrivacy().equalsIgnoreCase("OPEN")) {
 	    	return;
 	    }
-	    Entity event = createEntity(tempEvent, eventURL);
-        
+	    
+	    // make Facebook Query Language call
+	    String queryURL = buildQueryURL(eventID);
+	    EventSummary tempSummary = sendQueryRequest(queryURL);
+	    
+	    // parse JSON graph response into event entity using GSON
+	    Entity event = createEntity(tempEvent, tempSummary, eventURL);
+
 		// store event entity in datastore
         DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
         datastore.put(event);
@@ -57,7 +59,7 @@ public class EventParser {
 		return null;
 	}
 	
-	private static String buildURL(String eventID) {
+	private static String buildGraphURL(String eventID) {
 		StringBuilder url = new StringBuilder(BASE_URL);
 		url.append(eventID);
 		url.append("?access_token=");
@@ -67,10 +69,42 @@ public class EventParser {
 		return url.toString();
 	}
 	
-	private static Entity createEntity(HackBlueEvent tempEvent, String eventURL) {
+	private static String buildQueryURL(String eventID) {
+		StringBuilder url = new StringBuilder(BASE_URL);
+		url.append(QUERY);
+		url.append(eventID);
+		url.append("&access_token=");
+		url.append(ACCESS_TOKEN);
+		return url.toString();
+	}
+	
+	private static Event sendGraphRequest(String graphURL) throws MalformedURLException, IOException {
+		InputStream response = new URL(graphURL).openStream();
+	    BufferedReader br = new BufferedReader(new InputStreamReader(response, "UTF-8"));
+	    Gson gson = new Gson();
+	    Event tempEvent = gson.fromJson(br, Event.class);
+	    br.close();
+	    return tempEvent;
+	}
+	
+	private static EventSummary sendQueryRequest(String queryURL) throws MalformedURLException, IOException {
+		InputStream response = new URL(queryURL).openStream();
+	    BufferedReader br = new BufferedReader(new InputStreamReader(response, "UTF-8"));
+	    JsonArray array = new JsonParser().parse(br).getAsJsonObject().get("data").getAsJsonArray();
+	    Gson gson = new Gson();
+	    EventSummary tempEvent = gson.fromJson(array.get(0), EventSummary.class);
+	    br.close();
+	    return tempEvent;
+	}
+	
+	private static Entity createEntity(Event tempEvent, EventSummary tempSummary, String eventURL) {
         Entity event = new Entity("event", tempEvent.getID());
+        
+        // store URL and timestamp of datastore transaction
         event.setProperty("url", eventURL);
         event.setProperty("dateAdded", new Date().toString());
+        
+        // store event properties
         event.setProperty("id", tempEvent.getID());
         event.setProperty("owner",  tempEvent.getOwner());
         event.setProperty("name",  tempEvent.getName());
@@ -81,6 +115,10 @@ public class EventParser {
         event.setProperty("venue",  tempEvent.getVenue());
         event.setProperty("privacy",  tempEvent.getPrivacy());
         event.setProperty("picture",  tempEvent.getPicture());
+        
+        // store event summary properties
+        event.setProperty("all_members_count", tempSummary.getAllMembersCount());
+        event.setProperty("attending_count", tempSummary.getAttendingCount());
         return event;
 	}
 }
