@@ -42,7 +42,15 @@
                 <a class="dropdown-toggle" data-toggle="dropdown">Browse events<b class="caret"></b></a>
                 <ul class="dropdown-menu">
                   <li><a href="events.jsp">Browse all events</a></li>
-                  <li><a href="#">Browse by date</a></li>
+                  <li class="dropdown-submenu">
+                    <a tabindex="-1" href="#">Browse by date</a>
+                    <ul class="dropdown-menu">
+                      <li><a tabindex="-1" href="#">Today</a></li>
+                      <li><a tabindex="-1" href="#">Within 1 week</a></li>
+                      <li><a tabindex="-1" href="#">Within 2 weeks</a></li>
+                      <li><a tabindex="-1" href="#">After 2 weeks</a></li>
+                    </ul>
+                  </li><!--/.dropdown-submenu for date -->
                   <li><a href="#">Browse by organization</a></li>
                 </ul> <!-- /.dropdown-menu -->
               </li> <!-- /.dropdown -->
@@ -98,7 +106,7 @@
    					<h3>Add Event</h3>
    				</div>
    				<div class="modal-body">
-   					<input class="input-large" type="url" name="eventURL" placeholder="Event URL" required="required" />
+   					<input class="input-semi-large" type="url" name="eventURL" placeholder="Event URL" required="required" />
             <p>Note: URL must be in the form http://www.facebook.com/events/123456789</p>
    				</div>
    				<div class="modal-footer">
