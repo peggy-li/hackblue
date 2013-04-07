@@ -182,7 +182,7 @@
 
 
 			<!-- FAQ -->
-			<div class="faq">
+			<!-- <div class="faq">
 				<h1>FAQ</h1>
 					<p class="question"><strong>Q:</strong> What types of events can I submit?</p>
 					<p class="answer"><strong>A:</strong> You can submit any public Facebook events that are open to the entire Duke community and that are of interest to Duke students. Events should not have passed and should take place on campus or in the Durham / Triangle area. Any events that are found to be irrelevant to Duke students or that are offensive or in violation of copyright laws will be removed. </p>
@@ -192,7 +192,51 @@
 				
 					<p class="question"><strong>Q:</strong> What are featured events?</p>
 					<p class="answer"><strong>A:</strong> The featured events displayed on the homepage are the events with the most attendees on Facebook. We show them to help you find popular events. </p>
-			</div> <!-- /.faq -->
+			</div>  --><!-- /.faq -->
+
+
+			<h1 class="faq">FAQ</h1>
+			<div class="accordion" id="accordion2">
+			  	<div class="accordion-group">
+			    	<div class="accordion-heading">
+			      		<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne">
+			        		Q: What types of events can I submit?
+			      		</a>
+			    	</div>
+			    	<div id="collapseOne" class="accordion-body collapse">
+			    		<div class="accordion-inner">
+			        		A: You can submit any public Facebook events that are open to the entire Duke community and that are of interest to Duke students. Events should not have passed and should take place on campus or in the Durham / Triangle area. Any events that are found to be irrelevant to Duke students or that are offensive or in violation of copyright laws will be removed.
+			      		</div>
+			    	</div>
+			  	</div>
+
+			  	<div class="accordion-group">
+			    	<div class="accordion-heading">
+			      		<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseTwo">
+			        		Q: Who can submit an event? Do I have to be the host or attending an event to submit it?
+			      		</a>
+			    	</div>
+			    	<div id="collapseTwo" class="accordion-body collapse">
+			      		<div class="accordion-inner">
+			        		A: Nope! Anybody can submit an event as long as it meets the basic criteria described in above. You do not have to be a host or a member of the organization hosting the event, invited to, or planning to attend the event. 
+			      		</div>
+			    	</div>
+			  	</div>
+
+			  	<div class="accordion-group">
+			  		<div class="accordion-heading">
+			  			<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion3" href="#collapseThree">
+			        		Q: What are featured events?
+			      		</a>
+			  		</div>
+			  		<div id="collapseThree" class="accordion-body collapse">
+			  			<div class="accordion-inner">
+			  				A: The featured events displayed on the homepage are the events with the most attendees on Facebook. We show them to help you find popular events.
+			  			</div>
+			  		</div>
+			  	</div>
+			</div> <!-- /.accordion -->
+
 		</div> <!-- /.container -->
 
 
