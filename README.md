@@ -1,6 +1,7 @@
-#EventDevil#
+EventDevil
+==========
 
-##Description##
+###Description###
 It&apos;s easy.
 All you have to do is paste the URL of a public Facebook event and select up to three tags that describe the event&apos;s purpose and audience. We&apos;ll handle the rest. No long or complicated forms!
 
@@ -19,25 +20,28 @@ We know from experience that there&apos;s always a lot happening on campus and n
 
 We also know that it&apos;s hard for organizations to advertise their events to a large number of students without &ldquo;spamming&rdquo; them on Facebook or by email, and we believe that our platform can help.
 
-##Software Stack##
-Languages:  
+###Software Stack###
+Languages:
 * Java
 * JSP
 * HTML
 * CSS
-* JavaScript  
-Libraries/APIs:  
+* JavaScript
+
+Libraries/APIs:
 * Facebook Graph API
 * Facebook Query Language (FQL)
 * GSON
 * JODA
-* Bootstrap  
-Web Deployment:  
-* Google App Engine  
-Tools:  
+* Bootstrap
+
+Web Deployment:
+* Google App Engine
+
+Tools:
 * Eclipse
 * Sublime Text 2
 * git
 * GitHub
-* Google Chrome  
+* Google Chrome
 
