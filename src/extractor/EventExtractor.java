@@ -18,9 +18,7 @@ public class EventExtractor {
 	
 	public static List<Entity> retrieve() {
 		Query query = new Query("event").addSort("start_time", SortDirection.ASCENDING);
-		DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
-		List<Entity> events = datastore.prepare(query).asList(FetchOptions.Builder.withLimit(50));
-		return events;
+		return retrieveHelper(query);
 	}
 	
 	public static String formatDate(String timestring) {
@@ -31,4 +29,23 @@ public class EventExtractor {
 		DateTimeFormatter fmt = DateTimeFormat.forPattern("EEEE, MMMM d, YYYY h:mm a");
 		return fmt.print(datetime);
 	}
+	
+	/**
+	 * 
+	 * @param sortKey the key to sort entities by
+	 * @param sortDirection ordering of results
+	 * @return
+	 */
+	public static List<Entity> retrieve(String sortKey, String sortDirection){
+		SortDirection dir = (sortDirection.equalsIgnoreCase("ascending"))? SortDirection.ASCENDING :SortDirection.DESCENDING;
+		Query query = new Query("event").addSort("start_time", dir);
+		return retrieveHelper(query);
+	}
+	
+	public static List<Entity> retrieveHelper(Query query){
+		DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
+		List<Entity> events = datastore.prepare(query).asList(FetchOptions.Builder.withLimit(50));
+		return events;	
+	}
+	
 }
