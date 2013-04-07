@@ -66,63 +66,65 @@
 	</head>
 
 	<body>
-		<div class="row-fluid">
-			<div class="span2 pagination-right">
-				<img class="logo" src="../images/logo.png" alt="">
-			</div>
-			<div class="span10">
-				<!-- navbar -->
-				<div class="navbar">
-		  		<div class="navbar-inner">
-		    		<ul class="nav">
-		    			<li><a href="home.jsp">Home</a></li>
-		    			<li><a href="about.jsp">About</a></li>
-		    			<li class="dropdown">
-		    				<a class="dropdown-toggle" data-toggle="dropdown">Browse events<b class="caret"></b></a>
-		    				<ul class="dropdown-menu">
-		    					<li><a href="events.jsp">Browse all events</a></li>
-		    					<li class="dropdown-submenu">
-		    						<a tabindex="-1" href="#">Browse by date</a>
-		    						<ul class="dropdown-menu">
-		    							<li><a tabindex="-1" href="#">Today</a></li>
-		    							<li><a tabindex="-1" href="events.jsp?upcomingWeeks=1">Within 1 week</a></li>
-		    							<li><a tabindex="-1" href="events.jsp?upcomingWeeks=2">Within 2 weeks</a></li>
-		    							<li><a tabindex="-1" href="events.jsp?upcomingWeeks=5">Within 5 weeks</a></li>
-		    						</ul>
-		    					</li><!--/.dropdown-submenu for date -->
-		    					<li><a href="#">Browse by organization</a></li>
-		    					<!-- tags dropdown submenu -->
-		    					<li class="dropdown-submenu">
-		    						<a tabindex="-1" href="#">Browse by tag</a>
-		    						<ul class="dropdown-menu">
-		    							<li><a tabindex="-1" href="#">academics</a></li>
-		    							<li><a tabindex="-1" href="#">arts</a></li>
-		    							<li><a tabindex="-1" href="#">career</a></li>
-		    							<li><a tabindex="-1" href="#">compsci</a></li>
-		    							<li><a tabindex="-1" href="#">fundraiser</a></li>
-		    							<li><a tabindex="-1" href="#">sports</a></li>
-		    							<li><a tabindex="-1" href="#">social</a></li>
-		    							<li><a tabindex="-1" href="#">dsg</a></li>
-		    							<li><a tabindex="-1" href="#">freshmen</a></li>
-		    							<li><a tabindex="-1" href="#">sophomores</a></li>
-		    							<li><a tabindex="-1" href="#">juniors</a></li>
-		    							<li><a tabindex="-1" href="#">seniors</a></li>
-		    						</ul>
-		    					</li><!--/.dropdown-submenu for tags -->
-		    				</ul> <!-- /.dropdown-menu -->
-		    			</li> <!-- /.dropdown -->
-		    			<li><a href="#addEventModal" data-toggle="modal">Add an event</a>
-		    		</ul> <!-- /.nav --> 
-					<!-- Search bar -->
-			  		<form class="navbar-search pull-right">
-			 			<input type="text" class="search-query" autocomplete="off" data-provide="typeahead" placeholder="Search tags"
-			 				data-source='["academic", "arts", "career", "compsci", "fundraiser", "sports", "social", "dsg", "freshmen", "sophomores", "juniors", "seniors"]'>
-			  			<button type="submit" class="btn">Search</button>
-					</form>
-		  		</div> <!-- /.navbar-inner-->
-				</div> <!-- /.navbar --> 
-			</div> <!-- /.span10 -->
-		</div> <!-- /.row-fluid -->
+	
+	<!-- header -->
+	<div class="row-fluid">
+		<div class="span2 pagination-right">
+			<img class="logo" src="../images/logo.png" alt="">
+		</div>
+		<div class="span10">
+			<!-- navbar -->
+			<div class="navbar">
+	  		<div class="navbar-inner">
+	    		<ul class="nav">
+	    			<li><a href="home.jsp">Home</a></li>
+	    			<li><a href="about.jsp">About</a></li>
+	    			<li class="dropdown">
+	    				<a class="dropdown-toggle" data-toggle="dropdown">Browse events<b class="caret"></b></a>
+	    				<ul class="dropdown-menu">
+	    					<li><a href="events.jsp">Browse all events</a></li>
+	    					<li class="dropdown-submenu">
+	    						<a tabindex="-1" href="#">Browse by date</a>
+	    						<ul class="dropdown-menu">
+	    							<li><a tabindex="-1" href="#">Today</a></li>
+	    							<li><a tabindex="-1" href="events.jsp?upcomingWeeks=1">Within 1 week</a></li>
+	    							<li><a tabindex="-1" href="events.jsp?upcomingWeeks=2">Within 2 weeks</a></li>
+	    							<li><a tabindex="-1" href="events.jsp?upcomingWeeks=5">Within 5 weeks</a></li>
+	    						</ul>
+	    					</li><!--/.dropdown-submenu for date -->
+	    					<li><a href="#">Browse by organization</a></li>
+	    					<!-- tags dropdown submenu -->
+	    					<li class="dropdown-submenu">
+	    						<a tabindex="-1" href="#">Browse by tag</a>
+	    						<ul class="dropdown-menu">
+	    							<li><a tabindex="-1" href="events.jsp?tag=academic">academic</a></li>
+	    							<li><a tabindex="-1" href="events.jsp?tag=arts">arts</a></li>
+	    							<li><a tabindex="-1" href="events.jsp?tag=career">career</a></li>
+	    							<li><a tabindex="-1" href="events.jsp?tag=compsci">compsci</a></li>
+	    							<li><a tabindex="-1" href="events.jsp?tag=fundraiser">fundraiser</a></li>
+	    							<li><a tabindex="-1" href="events.jsp?tag=sports">sports</a></li>
+	    							<li><a tabindex="-1" href="events.jsp?tag=social">social</a></li>
+	    							<li><a tabindex="-1" href="events.jsp?tag=dsg">dsg</a></li>
+	    							<li><a tabindex="-1" href="events.jsp?tag=freshmen">freshmen</a></li>
+	    							<li><a tabindex="-1" href="events.jsp?tag=sophomores">sophomores</a></li>
+	    							<li><a tabindex="-1" href="events.jsp?tag=juniors">juniors</a></li>
+	    							<li><a tabindex="-1" href="events.jsp?tag=seniors">seniors</a></li>
+	    						</ul>
+	    					</li><!--/.dropdown-submenu for tags -->
+	    				</ul> <!-- /.dropdown-menu -->
+	    			</li> <!-- /.dropdown -->
+	    			<li><a href="#addEventModal" data-toggle="modal">Add an event</a>
+	    		</ul> <!-- /.nav --> 
+				<!-- Search bar -->
+		  		<form class="navbar-search pull-right" method="post" action="events.jsp">			  		
+		 			<input type="text" name="tag" class="search-query" autocomplete="off" data-provide="typeahead" placeholder="Search tags"
+		 				data-source='["academic", "arts", "career", "compsci", "fundraiser", "sports", "social", "dsg", "freshmen", "sophomores", "juniors", "seniors"]'>
+		  			<button type="submit" class="btn">Search</button>
+				</form>
+	  		</div> <!-- /.navbar-inner-->
+			</div> <!-- /.navbar --> 
+		</div> <!-- /.span10 -->
+	</div> <!-- /.row-fluid -->
 
 		<!-- carousel using hero -->
 		<div id="myCarousel" class="carousel slide">
