@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <%@ page import="parser.EventParser" %>
+<%@ page session="false" %>
 
 <html>
 <head>
@@ -14,8 +15,8 @@
 
 <%
 	String eventURL = request.getParameter("eventURL");
-	out.println(EventParser.parse(eventURL));
-	//response.sendRedirect("../index.html");
+	EventParser.parse(eventURL);
+	response.sendRedirect("events.jsp");
 %>
 
   </div>
