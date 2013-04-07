@@ -39,9 +39,9 @@
 		    						<a tabindex="-1" href="#">Browse by date</a>
 		    						<ul class="dropdown-menu">
 		    							<li><a tabindex="-1" href="#">Today</a></li>
-		    							<li><a tabindex="-1" href="#">Within 1 week</a></li>
-		    							<li><a tabindex="-1" href="#">Within 2 weeks</a></li>
-		    							<li><a tabindex="-1" href="#">After 2 weeks</a></li>
+		    							<li><a tabindex="-1" href="events.jsp?upcomingWeeks=1">Within 1 week</a></li>
+		    							<li><a tabindex="-1" href="events.jsp?upcomingWeeks=2">Within 2 weeks</a></li>
+		    							<li><a tabindex="-1" href="events.jsp?upcomingWeeks=5">Within 5 weeks</a></li>
 		    						</ul>
 		    					</li><!--/.dropdown-submenu for date -->
 		    					<li><a href="#">Browse by organization</a></li>
