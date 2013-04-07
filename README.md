@@ -22,22 +22,25 @@ We also know that it&apos;s hard for organizations to advertise their events to 
 ---------------------------------------
 
 ###Software Stack###
-__Languages__:
+_Languages_:
 * Java
 * JSP
 * HTML
 * CSS
 * JavaScript
-__Libraries/APIs__:
+
+_Libraries/APIs_:
 * Facebook Graph API
 * Facebook Query Language (FQL)
 * GSON
 * JODA
 * Bootstrap
 * jQuery
-__Web Deployment__:
+
+_Web Deployment_:
 * Google App Engine
-__Tools__:
+
+_Tools_:
 * Eclipse
 * Sublime Text 2
 * git
