@@ -50,6 +50,21 @@ public class EventExtractor {
 	}
 	
 	/**
+	 * Returns events starting today, or currently running today.
+	 * @return
+	 */
+	public static List<Entity> findEventsToday(){
+		List<Entity> allEvents = retrieve("start_time", "descending", 50);
+		List<Entity> result = new ArrayList<Entity>();
+		for(Entity e: allEvents){
+			if (spansToday((String) e.getProperty("start_time"), (String) e.getProperty("end_time"))){
+				result.add(e);
+			}
+		}
+		return result;
+	}
+	
+	/**
 	 * Returns the events falling within the number of upcoming weeks from current date.
 	 * @param numWeeks
 	 * @return
@@ -70,21 +85,6 @@ public class EventExtractor {
 		DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
 		List<Entity> events = datastore.prepare(query).asList(FetchOptions.Builder.withLimit(limit));
 		return events;	
-	}
-	
-	/**
-	 * Returns events starting today, or currently running today.
-	 * @return
-	 */
-	public static List<Entity> findEventsToday(){
-		List<Entity> allEvents = retrieve("start_time", "descending", 50);
-		List<Entity> result = new ArrayList<Entity>();
-		for(Entity e: allEvents){
-			if (spansToday((String) e.getProperty("start_time"), (String) e.getProperty("end_time"))){
-				result.add(e);
-			}
-		}
-		return result;
 	}
 	
 	/**

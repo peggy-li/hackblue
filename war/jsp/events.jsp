@@ -44,6 +44,8 @@
 		    				<a class="dropdown-toggle" data-toggle="dropdown">Browse events<b class="caret"></b></a>
 		    				<ul class="dropdown-menu">
 		    					<li><a href="events.jsp">Browse all events</a></li>
+		    					<li><a href="events.jsp?popular=true">Browse by popularity</a>
+		    					<li><a href="#">Browse by organization</a></li>
 		    					<li class="dropdown-submenu">
 		    						<a tabindex="-1" href="#">Browse by date</a>
 		    						<ul class="dropdown-menu">
@@ -53,7 +55,6 @@
 		    							<li><a tabindex="-1" href="events.jsp?upcomingWeeks=5">Within 5 weeks</a></li>
 		    						</ul>
 		    					</li><!--/.dropdown-submenu for date -->
-		    					<li><a href="#">Browse by organization</a></li>
 		    					<!-- tags dropdown submenu -->
 		    					<li class="dropdown-submenu">
 		    						<a tabindex="-1" href="#">Browse by tag</a>
@@ -95,13 +96,17 @@
 			String numWeeks = request.getParameter("upcomingWeeks");
            	String tag = request.getParameter("tag");
 			String today = request.getParameter("today");
+			String popularity = request.getParameter("popular");
            	if (numWeeks != null){
 				int tempWeeks = Integer.parseInt(numWeeks);
 				events = EventExtractor.findUpcoming(tempWeeks);
 			}
-			if (today != null){
+           	else if (today != null){
 				events = EventExtractor.findEventsToday();
 			}
+           	else if (popularity != null) {
+           		events = EventExtractor.retrieve("attending_count", "descending", 50);
+           	}
 			else if (tag != null) {
 				events = EventExtractor.filter("tags", tag, "ascending", 50);
 			}
@@ -113,12 +118,12 @@
 			}
 			for (Entity event : events) {
 				// don't display old events
-				if (!((String) event.getProperty("end_time")).equals("")){
-				DateTime d2 = ISODateTimeFormat.dateTimeNoMillis().parseDateTime((String) event.getProperty("end_time"));
-				DateTime d1 = new DateTime(new Date());
-				if (d1.getMillis() > d2.getMillis()){
-				continue;
-				}
+				if (!event.getProperty("end_time").equals(new String(""))) {
+					DateTime d2 = ISODateTimeFormat.dateTimeNoMillis().parseDateTime((String) event.getProperty("end_time"));
+					DateTime d1 = new DateTime(new Date());
+					if (d1.getMillis() > d2.getMillis()) {
+						continue;
+					}
 				}
 %>
 			<div class="event row-fluid">
