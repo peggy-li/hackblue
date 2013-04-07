@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1" %>
-<%@ page import="java.util.List, java.util.ArrayList, extractor.EventExtractor, com.google.appengine.api.datastore.*" %>
+<%@ page import="java.util.Date, org.joda.time.format.ISODateTimeFormat, org.joda.time.DateTime, java.util.List, java.util.ArrayList, extractor.EventExtractor, com.google.appengine.api.datastore.*" %>
 <%@ page session="false" %>
 
 <!DOCTYPE html>
@@ -27,79 +27,93 @@
 	<body>
 
     <!-- header -->
-		<div class="row-fluid">
-      <div class="span2 pagination-right">
-        <img class="logo" src="../images/logo2.png" alt="">
-      </div>
-      <div class="span10">
-        <!-- navbar -->
-        <div class="navbar">
-          <div class="navbar-inner">
-            <ul class="nav">
-              <li><a href="home.jsp">Home</a></li>
-              <li><a href="about.jsp">About</a></li>
-              <li class="dropdown">
-                <a class="dropdown-toggle" data-toggle="dropdown">Browse events<b class="caret"></b></a>
-                <ul class="dropdown-menu">
-                  <li><a href="events.jsp">Browse all events</a></li>
-                  <li class="dropdown-submenu">
-                    <a tabindex="-1" href="#">Browse by date</a>
-                    <ul class="dropdown-menu">
-                      <li><a tabindex="-1" href="#">Today</a></li>
-                     <li><a tabindex="-1" href="events.jsp?upcomingWeeks=1">Within 1 week</a></li>
-		    		<li><a tabindex="-1" href="events.jsp?upcomingWeeks=2">Within 2 weeks</a></li>
-		    		<li><a tabindex="-1" href="events.jsp?upcomingWeeks=5">Within 5 weeks</a></li>
-                    </ul>
-                  </li><!--/.dropdown-submenu for date -->
-                  <li><a href="#">Browse by organization</a></li>
-                  <!-- tags dropdown submenu -->
-                  <li class="dropdown-submenu">
-                    <a tabindex="-1" href="#">Browse by tag</a>
-                    <ul class="dropdown-menu">
-                      <li><a tabindex="-1" href="#">academics</a></li>
-                      <li><a tabindex="-1" href="#">arts</a></li>
-                      <li><a tabindex="-1" href="#">career</a></li>
-                      <li><a tabindex="-1" href="#">compsci</a></li>
-                      <li><a tabindex="-1" href="#">fundraiser</a></li>
-                      <li><a tabindex="-1" href="#">sports</a></li>
-                      <li><a tabindex="-1" href="#">social</a></li>
-                      <li><a tabindex="-1" href="#">dsg</a></li>
-                      <li><a tabindex="-1" href="#">freshmen</a></li>
-                      <li><a tabindex="-1" href="#">sophomores</a></li>
-                      <li><a tabindex="-1" href="#">juniors</a></li>
-                      <li><a tabindex="-1" href="#">seniors</a></li>
-                    </ul>
-                  </li><!--/.dropdown-submenu for tags -->
-                </ul> <!-- /.dropdown-menu -->
-              </li> <!-- /.dropdown -->
-              <li><a href="#addEventModal" data-toggle="modal">Add an event</a>
-            </ul> <!-- /.nav --> 
-          <!-- Search bar -->
-            <form class="navbar-search pull-right">
-            <input type="text" class="search-query" placeholder="Search events">
-              <button type="submit" class="btn">Search</button>
-          </form>
-          </div> <!-- /.navbar-inner-->
-        </div> <!-- /.navbar --> 
-      </div> <!-- /.span10 -->
-    </div> <!-- /.row-fluid -->
+	<div class="row-fluid">
+		<div class="span2 pagination-right">
+			<img class="logo" src="../images/logo2.png" alt="">
+		</div>
+		<div class="span10">
+			<!-- navbar -->
+			<div class="navbar">
+	  		<div class="navbar-inner">
+	    		<ul class="nav">
+	    			<li><a href="home.jsp">Home</a></li>
+	    			<li><a href="about.jsp">About</a></li>
+	    			<li class="dropdown">
+	    				<a class="dropdown-toggle" data-toggle="dropdown">Browse events<b class="caret"></b></a>
+	    				<ul class="dropdown-menu">
+	    					<li><a href="events.jsp">Browse all events</a></li>
+	    					<li class="dropdown-submenu">
+	    						<a tabindex="-1" href="#">Browse by date</a>
+	    						<ul class="dropdown-menu">
+	    							<li><a tabindex="-1" href="#">Today</a></li>
+	    							<li><a tabindex="-1" href="events.jsp?upcomingWeeks=1">Within 1 week</a></li>
+	    							<li><a tabindex="-1" href="events.jsp?upcomingWeeks=2">Within 2 weeks</a></li>
+	    							<li><a tabindex="-1" href="events.jsp?upcomingWeeks=5">Within 5 weeks</a></li>
+	    						</ul>
+	    					</li><!--/.dropdown-submenu for date -->
+	    					<li><a href="#">Browse by organization</a></li>
+	    					<!-- tags dropdown submenu -->
+	    					<li class="dropdown-submenu">
+	    						<a tabindex="-1" href="#">Browse by tag</a>
+	    						<ul class="dropdown-menu">
+	    							<li><a tabindex="-1" href="events.jsp?tag=academic">academic</a></li>
+	    							<li><a tabindex="-1" href="events.jsp?tag=arts">arts</a></li>
+	    							<li><a tabindex="-1" href="events.jsp?tag=career">career</a></li>
+	    							<li><a tabindex="-1" href="events.jsp?tag=compsci">compsci</a></li>
+	    							<li><a tabindex="-1" href="events.jsp?tag=fundraiser">fundraiser</a></li>
+	    							<li><a tabindex="-1" href="events.jsp?tag=sports">sports</a></li>
+	    							<li><a tabindex="-1" href="events.jsp?tag=social">social</a></li>
+	    							<li><a tabindex="-1" href="events.jsp?tag=dsg">dsg</a></li>
+	    							<li><a tabindex="-1" href="events.jsp?tag=freshmen">freshmen</a></li>
+	    							<li><a tabindex="-1" href="events.jsp?tag=sophomores">sophomores</a></li>
+	    							<li><a tabindex="-1" href="events.jsp?tag=juniors">juniors</a></li>
+	    							<li><a tabindex="-1" href="events.jsp?tag=seniors">seniors</a></li>
+	    						</ul>
+	    					</li><!--/.dropdown-submenu for tags -->
+	    				</ul> <!-- /.dropdown-menu -->
+	    			</li> <!-- /.dropdown -->
+	    			<li><a href="#addEventModal" data-toggle="modal">Add an event</a>
+	    		</ul> <!-- /.nav --> 
+				<!-- Search bar -->
+		  		<form class="navbar-search pull-right" method="post" action="events.jsp">			  		
+		 			<input type="text" name="tag" class="search-query" autocomplete="off" data-provide="typeahead" placeholder="Search tags"
+		 				data-source='["academic", "arts", "career", "compsci", "fundraiser", "sports", "social", "dsg", "freshmen", "sophomores", "juniors", "seniors"]'>
+		  			<button type="submit" class="btn">Search</button>
+				</form>
+	  		</div> <!-- /.navbar-inner-->
+			</div> <!-- /.navbar --> 
+		</div> <!-- /.span10 -->
+	</div> <!-- /.row-fluid -->
 
 		<div class="container">
 <%		
 			List<Entity> events;
-			// checking for timeframe
-			String numWeeks = (request.getParameter("upcomingWeeks"));
-			if (numWeeks == null){
-				events = EventExtractor.retrieve();
-			}
-			else{
+			
+           	// checking for parameters
+			String numWeeks = request.getParameter("upcomingWeeks");
+           	String tag = request.getParameter("tag");
+			if (numWeeks != null){
 				int tempWeeks = Integer.parseInt(numWeeks);
 				events = EventExtractor.findUpcoming(tempWeeks);
+			}
+			else if (tag != null) {
+				events = EventExtractor.filter("tags", tag, "ascending", 50);
+			}
+			else {
+				events = EventExtractor.retrieve("start_time", "ascending", 50);
 			}
 			if (events.isEmpty()) {
 				out.print("<p>No events found.</p>");
 			}
 			for (Entity event : events) {
+				// don't display old events
+				if (!((String) event.getProperty("end_time")).equals("")){
+				DateTime d2 = ISODateTimeFormat.dateTimeNoMillis().parseDateTime((String) event.getProperty("end_time"));
+				DateTime d1 = new DateTime(new Date());
+				if (d1.getMillis() > d2.getMillis()){
+				continue;
+				}
+				}
 %>
 			<div class="event row-fluid">
 				<div class="left">
@@ -116,16 +130,22 @@
 					else {
 						out.print("</p>");
 					}
+
 %>
 					<p class="location"><%=event.getProperty("location") %></p>
+					<p><%
+					if (!event.getProperty("attending_count").equals(new String(""))){
+						out.print(event.getProperty("attending_count") + " people are attending.");
+					}
+					%></p>
 					<p>
 <%
 					Object obj = event.getProperty("tags");
 					if (obj != null) {
 						ArrayList<String> allTags = (ArrayList<String>) obj;
 						out.print("Tags: ");
-						for (String tag : allTags) {
-							out.print("<a href='#'>#" + tag + "</a> ");
+						for (String t : allTags) {
+							out.print("<a href='#'>#" + t + "</a> ");
 						}
 					}
 %>
