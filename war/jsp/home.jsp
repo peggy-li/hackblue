@@ -78,7 +78,7 @@
 		    			<li><a href="home.jsp">Home</a></li>
 		    			<li><a href="about.jsp">About</a></li>
 		    			<li class="dropdown">
-		    				<a href="events.jsp" class="dropdown-toggle" data-toggle="dropdown">Browse events<b class="caret"></b></a>
+		    				<a class="dropdown-toggle" data-toggle="dropdown">Browse events<b class="caret"></b></a>
 		    				<ul class="dropdown-menu">
 		    					<li><a href="events.jsp">Browse all events</a></li>
 		    					<li class="dropdown-submenu">
@@ -168,7 +168,7 @@
 
 		<!-- Modal for adding event -->
 		<div id="addEventModal" class="modal hide fade" tabindex="-1" role="dialog">
-			<form id="modal-form" method="post" action="addEvent.jsp">
+			<form id="modal-form" name="modal-form" method="post" action="addEvent.jsp">
 				<div class="modal-header">
    					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
    					<h3>Add Event</h3>
@@ -176,6 +176,43 @@
    				<div class="modal-body">
    					<input class="input-semi-large" type="url" name="eventURL" placeholder="Event URL" required="required" />
    					<p>Note: URL must be in the form http://www.facebook.com/events/123456789</p>
+   					<div class="control-group">
+    					<p class="pull-left">Add tags (choose up to 3): </p>
+    					<div class="controls span2">
+        					<label class="checkbox">
+            					<input type="checkbox" name="tags[]" value="academic" onchange='checkLen(this);'> Academic
+        					</label>
+       						<label class="checkbox">
+            					<input type="checkbox" name="tags[]" value="arts" onchange='checkLen(this);'> Arts
+        					</label>
+        					<label class="checkbox">
+            					<input type="checkbox" name="tags[]" value="career" onchange='checkLen(this);'> Career
+        					</label>
+        					<label class="checkbox">
+            					<input type="checkbox" name="tags[]" value="compsci" onchange='checkLen(this);'> Compsci
+        					</label>
+        					<label class="checkbox">
+            					<input type="checkbox" name="tags[]" value="sports" onchange='checkLen(this);'> Sports
+        					</label>
+    					</div> <!-- /.controls -->
+    					<div class="controls span2">
+        					<label class="checkbox">
+            					<input type="checkbox" name="tags[]" value="dsg" onchange='checkLen(this);'> DSG
+        					</label>
+       						<label class="checkbox">
+            					<input type="checkbox" name="tags[]" value="freshmen" onchange='checkLen(this);'> Freshmen
+        					</label>
+        					<label class="checkbox">
+            					<input type="checkbox" name="tags[]" value="sophomores" onchange='checkLen(this);'> Sophomores
+        					</label>
+        					<label class="checkbox">
+            					<input type="checkbox" name="tags[]" value="juniors" onchange='checkLen(this);'> Juniors
+        					</label>
+        					<label class="checkbox">
+            					<input type="checkbox" name="tags[]" value="seniors" onchange='checkLen(this);'> Seniors
+        					</label>
+    					</div> <!-- /.controls -->
+    				</div> <!--  /.control-group -->
    				</div>
    				<div class="modal-footer">
    					<button class="btn" data-dismiss="modal">Cancel</button>
@@ -192,6 +229,7 @@
    		</div><!-- /.footer -->
 
 	<!-- scripts -->
+	<script src="../js/checklen.js"></script>
 	<script src="../js/jquery.js"></script>
 	<script src="../js/bootstrap.js"></script>
    	<script src="../js/holder.js"></script>
