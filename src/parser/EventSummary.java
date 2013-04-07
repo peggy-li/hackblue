@@ -1,16 +1,16 @@
 package parser;
 
 public class EventSummary {
-	private String all_members_count = "";
-	private String attending_count = "";
+	private int all_members_count = 0;
+	private int attending_count = 0;
 	
 	public EventSummary() {}
 	
-	public String getAllMembersCount() {
+	public int getAllMembersCount() {
 		return all_members_count;
 	}
 	
-	public String getAttendingCount() {
+	public int getAttendingCount() {
 		return attending_count;
 	}
 }
