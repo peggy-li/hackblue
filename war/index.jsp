@@ -125,7 +125,6 @@
 			<%
 		List<Entity> events = EventExtractor.retrieve("attending_count", "descending", 4);
 		for (Entity event: events){
-		out.println(event.getProperty("attending_count"));
 		%>
 	 		 	<div class="span3">
 	 		 		<img src=<%=event.getProperty("picture") %> class="img-polaroid">
