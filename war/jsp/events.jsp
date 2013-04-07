@@ -118,8 +118,9 @@
 			}
 			for (Entity event : events) {
 				// don't display old events
+                String startTime = (String) event.getProperty("start_time");
 				String endTime = (String) event.getProperty("end_time");
-				if (!endTime.equals("") && endTime.length() == 21) {
+				if (!endTime.equals("") && endTime.length() == 24) {
 					DateTime d2 = ISODateTimeFormat.dateTimeNoMillis().parseDateTime((String) event.getProperty("end_time"));
 					DateTime d1 = new DateTime(new Date());
 					if (d1.getMillis() > d2.getMillis()) {
@@ -134,10 +135,13 @@
 				<div class="right">
 					<p class="name"><a href=<%=event.getProperty("url") %> target="_blank"><%=event.getProperty("name") %></a></p>
 					<p class="host">Created by: <%=event.getProperty("owner") %></p>
-					<p class="date"><%=EventExtractor.formatDate((String) event.getProperty("start_time")) %>
-<%
-					if (!endTime.equals("") && endTime.length() == 21) {
-						out.print(" - " + EventExtractor.formatDate((String) event.getProperty("end_time")) + "</p>");
+					<p class="date">
+<%                  
+                    if (!startTime.equals("") && startTime.length() == 24) {
+                        out.print(EventExtractor.formatDate(startTime));
+                    }
+					if (!endTime.equals("") && endTime.length() == 24) {
+						out.print(" - " + EventExtractor.formatDate(endTime) + "</p>");
 					}
 					else {
 						out.print("</p>");
