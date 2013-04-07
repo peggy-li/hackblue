@@ -69,6 +69,21 @@ public class EventExtractor {
 	}
 	
 	/**
+	 * Returns events starting today, or currently running today.
+	 * @return
+	 */
+	public static List<Entity> findEventsToday(){
+		List<Entity> allEvents = retrieve();
+		List<Entity> result = new ArrayList<Entity>();
+		for(Entity e: allEvents){
+			if (spansToday((String) e.getProperty("start_time"), (String) e.getProperty("end_time"))){
+				result.add(e);
+			}
+		}
+		return result;
+	}
+	
+	/**
 	 * returns true if a date falls within X weeks of current date
 	 * @return
 	 */
@@ -80,6 +95,26 @@ public class EventExtractor {
 		long d1 = dateTime1.getMillis();
 		long d2 = dateTime2.getMillis();
 		return (d1 < d2);
+	}
+	
+	private static boolean isToday(String otherDate){
+		DateTime d1 = ISODateTimeFormat.dateTimeNoMillis().parseDateTime(otherDate);
+		DateTime d2 = new DateTime(new Date());
+		return (d1.getDayOfYear() == d2.getDayOfYear() && d1.getYear()==d2.getYear());
+	}
+	
+	/**
+	 * returns true if an event spans through today
+	 * @param otherDate
+	 * @return
+	 */
+	private static boolean spansToday(String iStart, String iEnd){
+		DateTime start = ISODateTimeFormat.dateTimeNoMillis().parseDateTime(iStart);
+		DateTime d2 = new DateTime(new Date());
+		DateTime end = ISODateTimeFormat.dateTimeNoMillis().parseDateTime(iEnd);
+		return (start.getDayOfYear() == d2.getDayOfYear() && start.getYear()==d2.getYear() ||
+				(start.getDayOfYear() <= d2.getDayOfYear() && start.getYear()<=d2.getYear() &&
+				 end.getDayOfYear() >= d2.getDayOfYear() && end.getYear() >= d2.getYear()));
 	}
 	
 }
