@@ -9,8 +9,11 @@ body {
 	float: left;
 }
 
+.footer {
+	margin-top: 40px;
+}
 
-/* CUSTOMIZE THE NAVIGATION BAR */
+/* CUSTOMIZE NAVIGATION BAR */
 .navbar{
 	margin-top: 40px;
 	padding: 10px 0;
@@ -32,4 +35,42 @@ body {
 }
 
 
-/* GENERAL UTILITY */
+/* CUSTOMIZE EVENT */
+
+.event {
+	margin-top: 40px;
+}
+
+.event img {
+	width: 200px;
+	height: 200px;
+	text-align: left;
+}
+
+.event .name {
+	font-size: 180%;
+}
+
+.event .host {
+	font-size: 120%;
+	margin-bottom: 20px;
+}
+
+.event .date {
+	font-size: 120%;
+}
+
+.event .location {
+	font-size: 120%;
+}
+
+.event .left {
+	float: left;
+	width: 42%;
+	text-align: center;
+}
+
+.event .right{
+	float: right;
+	width: 58%
+}
