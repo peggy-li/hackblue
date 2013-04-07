@@ -1,5 +1,7 @@
 package extractor;
 
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import org.joda.time.DateTime;
@@ -46,6 +48,35 @@ public class EventExtractor {
 		DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
 		List<Entity> events = datastore.prepare(query).asList(FetchOptions.Builder.withLimit(limit));
 		return events;	
+	}
+	
+	/**
+	 * Returns the events falling within the number of upcoming weeks from current date.
+	 * @param numWeeks
+	 * @return
+	 */
+	public static List<Entity> findUpcoming(int numWeeks){
+		List<Entity> rawResult = retrieve();
+		List<Entity> result = new ArrayList<Entity>();
+		// filter results
+		for (Entity event: rawResult){
+			if (isInRange((String) event.getProperty("start_time"), numWeeks)){
+			result.add(event);
+			}
+		}
+		return result;
+	}
+	
+	/**
+	 * returns true if a date falls within X weeks of current date
+	 * @return
+	 */
+	private static boolean isInRange(String otherDate, int numWeeks){
+		DateTimeFormatter fmt = DateTimeFormat.forPattern("yyyy-MM-dd");
+		DateTime dateTime1 = fmt.parseDateTime(otherDate);
+		DateTime dateTime2 = fmt.parseDateTime(new Date().toString());
+		dateTime2.plusWeeks(numWeeks);
+		return (dateTime1.isBefore(dateTime2));
 	}
 	
 }
