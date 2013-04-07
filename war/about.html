@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>EventDevil - About</title>
+
+		<!-- styles -->
+		<link href="css/bootstrap.css" rel="stylesheet">
+   		<link href="css/main.css" rel="stylesheet">
+
+   		<style>
+
+	    	/* CUSTOMIZE THE NAVIGATION BAR */
+
+			.navbar{
+				margin: 0 15px;
+				padding: 10px 0;
+			}    
+
+			.navbar .nav li {
+				padding: 2px;
+			}
+
+			.navbar .nav li a {
+				padding: 10px 20px;
+				font-weight: 500;
+				font-size: 110%;
+			}
+
+	    	/* Customize the navigation bar dropdown menu */
+
+	    	.dropdown-menu li a {
+	    		padding: 4px 20px;
+	    	}
+
+
+	    	/* Customize the FAQ */
+
+   			.faq {
+   				margin: 0 15px;
+   			}
+
+   			.faq ul {
+   				list-style: none;
+   			}
+
+   			.faq li {
+   				margin-top: 15px;
+   			}
+
+   		</style>
+	</head>
+
+	<body>
+		<!-- navbar -->
+		<div class="navbar">
+	  		<div class="navbar-inner">
+	    		<ul class="nav">
+	    			<li><a href="index.html">Home</a></li>
+	    			<li><a href="about.html">About</a></li>
+	    			<li class="dropdown">
+	    				<!-- <a href="events.html" class="dropdown-toggle" data-toggle="dropdown">Browse Events</a> -->
+	    				<a href="events.html" class="dropdown-toggle" data-toggle="dropdown">Browse events<b class="caret"></b></a>
+	    				<ul class="dropdown-menu">
+	    					<li><a href="events.html">Browse all events</a></li>
+	    					<li><a href="#">Browse by date</a></li>
+	    					<li><a href="#">Browse by organization</a></li>
+	    				</ul> <!-- /.dropdown-menu -->
+	    			</li> <!-- /.dropdown -->
+	    			<li><a href="#addEventModal" data-toggle="modal">Add an event</a>
+	    		</ul> <!-- /.nav --> 
+				<!-- Search bar -->
+		  		<form class="navbar-search pull-right">
+		 			<input type="text" class="search-query" placeholder="Search events">
+		  			<button type="submit" class="btn">Search</button>
+				</form>
+	  		</div> <!-- /.navbar-inner-->
+		</div> <!-- /.navbar -->
+		
+		<!-- modal -->
+		<div id="addEventModal" class="modal hide fade" tabindex="-1" role="dialog">
+			<form id="modal-form" method="post" action="jsp/addEvent.jsp">
+				<div class="modal-header">
+   					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+   					<h3>Add Event</h3>
+   				</div>
+   				<div class="modal-body">
+   					<input class="input-large" type="url" name="eventURL" placeholder="Event URL" required="required" />
+   				</div>
+   				<div class="modal-footer">
+   					<button class="btn" data-dismiss="modal">Cancel</button>
+   					<input class="btn btn-primary" type="submit" value="Add Event"/>
+   				</div>
+   			</form>
+   		</div> <!-- /.modal -->
+
+   		<!-- info -->
+   		<p><h1>It's easy.</h1></p> All you have to do is paste the URL of a public Facebook event. We'll handle the rest. You don't have to be a member of the organization hosting the event, and you don't have to fill out any long or complicated forms. </p>
+
+   		<p><h1>It's comprehensive.</h1> Many events by students or student organizations aren't listed on the Duke Events Calendar or on most listservs. You shouldn't have to miss an event just because you or your friends weren't invited to the event on Facebook... or maybe you were invited to so many Facebook events that you started ignoring them.</p>
+
+   		<p><h1>It's social</h1></p> All of the events featured on our website are linked to a Facebook event, so you can quickly check to see which of your friends are inviting, or RSVP and then invite friends! </p>
+
+
+		<!-- FAQ -->
+		<div class="faq">
+			<h1>FAQ</h1><hr>
+			<ul>
+				<li>
+					<p><strong>Q:</strong> What types of events can I submit?</p>
+					<p><strong>A:</strong> You can submit any public Facebook events that are open to the entire Duke community and that are of interest to Duke students. Events should not have passed and should take place on campus or in the Durham / Triangle area. Any events that are found to be irrelevant to Duke students or that are in offensive or in violation of copyright laws will be removed. </p>
+				</li>
+				<li>
+					<p><strong>Q:</strong> Who can submit an event? Do I have to be the host or attending an event to submit it?</p>
+					<p><strong>A:</strong> Nope! Anybody can submit an event as long as it meets the basic criteria described in above. You do not have to be a host or a member of the organization hosting the event, invited to, or planning to attend the event. </p>
+				</li>
+				<li>
+					<p><strong>Q:</strong> What are featured events?</p>
+					<p><strong>A:</strong> The featured events displayed on the homepage are the three events with the most attendees on Facebook. We show them to help you find popular events. </p>
+				</li>
+			</ul>
+		</div> <!-- /.faq -->
+
+
+		<!-- scripts -->
+		<script src="js/jquery.js"></script>
+		<script src="js/bootstrap.js"></script>
+	   	<script src="js/holder.js"></script>
+	   	<script>
+	      	!function ($) {
+	        $(function(){
+	          	// carousel demo
+	          	$('#myCarousel').carousel()
+	        })
+	     	}(window.jQuery);
+	    </script>
+
+	</body>
+</html>
