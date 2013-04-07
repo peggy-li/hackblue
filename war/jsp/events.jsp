@@ -34,32 +34,31 @@
     	}
 
     	.event .name {
-    		font-size: 200%;
-    		margin-top: 10px;
+    		font-size: 180%;
     	}
 
     	.event .host {
-    		font-size: 140%;
+    		font-size: 120%;
     		margin-bottom: 20px;
     	}
 
     	.event .date {
-    		font-size: 160%;
+    		font-size: 120%;
     	}
 
     	.event .location {
-    		font-size: 160%;
+    		font-size: 120%;
     	}
 
     	.event .left {
     		float: left;
-    		width: 50%;
+    		width: 42%;
     		text-align: center;
     	}
 
     	.event .right{
     		float: right;
-    		width: 50%
+    		width: 58%
     	}
 
 		</style>
@@ -67,37 +66,42 @@
 
 	<body>
 
-		<!-- navbar -->
-		<div class="navbar">
-	  		<div class="navbar-inner">
-	    		<ul class="nav">
-	    			<li><a href="../index.html">Home</a></li>
-	    			<li><a href="../about.html">About</a></li>
-	    			<li class="dropdown">
-	    				<!-- <a href="events.html" class="dropdown-toggle" data-toggle="dropdown">Browse Events</a> -->
-	    				<a href="events.jsp" class="dropdown-toggle" data-toggle="dropdown">Browse events<b class="caret"></b></a>
-	    				<ul class="dropdown-menu">
-	    					<li><a href="events.jsp">Browse all events</a></li>
-	    					<li><a href="#">Browse by date</a></li>
-	    					<li><a href="#">Browse by organization</a></li>
-	    				</ul> <!-- /.dropdown-menu -->
-	    			</li> <!-- /.dropdown -->
-	    			<li><a href="#addEventModal" data-toggle="modal">Add an event</a>
-	    		</ul> <!-- /.nav --> 
-				<!-- Search bar -->
-		  		<form class="navbar-search pull-right">
-		 			<input type="text" class="search-query" placeholder="Search events">
-		  			<button type="submit" class="btn">Search</button>
-				</form>
-	  		</div> <!-- /.navbar-inner-->
-		</div> <!-- /.navbar -->
+    <!-- header -->
+		<div class="row-fluid">
+      <div class="span2 pagination-right">
+        <img class="logo" src="../images/logo.png" alt="">
+      </div>
+      <div class="span10">
+        <!-- navbar -->
+        <div class="navbar">
+          <div class="navbar-inner">
+            <ul class="nav">
+              <li><a href="../index.html">Home</a></li>
+              <li><a href="../about.html">About</a></li>
+              <li class="dropdown">
+                <a href="events.html" class="dropdown-toggle" data-toggle="dropdown">Browse events<b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                  <li><a href="events.jsp">Browse all events</a></li>
+                  <li><a href="#">Browse by date</a></li>
+                  <li><a href="#">Browse by organization</a></li>
+                </ul> <!-- /.dropdown-menu -->
+              </li> <!-- /.dropdown -->
+              <li><a href="#addEventModal" data-toggle="modal">Add an event</a>
+            </ul> <!-- /.nav --> 
+          <!-- Search bar -->
+            <form class="navbar-search pull-right">
+            <input type="text" class="search-query" placeholder="Search events">
+              <button type="submit" class="btn">Search</button>
+          </form>
+          </div> <!-- /.navbar-inner-->
+        </div> <!-- /.navbar --> 
+      </div> <!-- /.span10 -->
+    </div> <!-- /.row-fluid -->
 
 		<div class="container">
 		
 <%		
-			DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
-			Query query = new Query("event").addSort("start_time", Query.SortDirection.DESCENDING);
-			List<Entity> events = datastore.prepare(query).asList(FetchOptions.Builder.withLimit(50));
+			List<Entity> events = EventExtractor.retrieve();
 			if (events.isEmpty()) {
 				out.print("<p>No events found.</p>");
 			}
@@ -109,7 +113,7 @@
 				</div> <!-- /.left -->
 				<div class="right">
 					<p class="name"><a href=<%=event.getProperty("url") %>><%=event.getProperty("name") %></a></p>
-					<p class="host"><%=event.getProperty("owner") %></p>
+					<p class="host">Created by: <%=event.getProperty("owner") %></p>
 					<p class="date"><%=EventExtractor.formatDate((String) event.getProperty("start_time")) %>
 <%
 					if (!event.getProperty("end_time").equals(new String(""))) {
