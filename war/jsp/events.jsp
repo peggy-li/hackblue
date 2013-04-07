@@ -130,8 +130,14 @@
 					else {
 						out.print("</p>");
 					}
+
 %>
 					<p class="location"><%=event.getProperty("location") %></p>
+					<p><%
+					if (!event.getProperty("attending_count").equals(new String(""))){
+						out.print(event.getProperty("attending_count") + " people are attending.");
+					}
+					%></p>
 					<p>
 <%
 					Object obj = event.getProperty("tags");
