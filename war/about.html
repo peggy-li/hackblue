@@ -10,27 +10,22 @@
 
    		<style>
 
-	    	/* CUSTOMIZE THE NAVIGATION BAR */
+	    	/* CUSTOMIZE INFO SECTION AT TOP */
+	    	.info-header {
+	    		margin: 0px 15px;
+	    		height: 200px;
+	    	}
 
-			.navbar{
-				margin: 0 15px;
-				padding: 10px 0;
-			}    
+	    	.info-header .left {
+	    		float: left;
+	    		width: 50%;
+	    		text-align: left;
+	    	}
 
-			.navbar .nav li {
-				padding: 2px;
-			}
-
-			.navbar .nav li a {
-				padding: 10px 20px;
-				font-weight: 500;
-				font-size: 110%;
-			}
-
-	    	/* Customize the navigation bar dropdown menu */
-
-	    	.dropdown-menu li a {
-	    		padding: 4px 20px;
+	    	.info-header .right {
+	    		float: right;
+	    		width: 50%;
+	    		text-align: right;
 	    	}
 
 
@@ -52,30 +47,36 @@
 	</head>
 
 	<body>
-		<!-- navbar -->
-		<div class="navbar">
-	  		<div class="navbar-inner">
-	    		<ul class="nav">
-	    			<li><a href="index.html">Home</a></li>
-	    			<li><a href="about.html">About</a></li>
-	    			<li class="dropdown">
-	    				<!-- <a href="events.html" class="dropdown-toggle" data-toggle="dropdown">Browse Events</a> -->
-	    				<a href="events.html" class="dropdown-toggle" data-toggle="dropdown">Browse events<b class="caret"></b></a>
-	    				<ul class="dropdown-menu">
-	    					<li><a href="events.html">Browse all events</a></li>
-	    					<li><a href="#">Browse by date</a></li>
-	    					<li><a href="#">Browse by organization</a></li>
-	    				</ul> <!-- /.dropdown-menu -->
-	    			</li> <!-- /.dropdown -->
-	    			<li><a href="#addEventModal" data-toggle="modal">Add an event</a>
-	    		</ul> <!-- /.nav --> 
-				<!-- Search bar -->
-		  		<form class="navbar-search pull-right">
-		 			<input type="text" class="search-query" placeholder="Search events">
-		  			<button type="submit" class="btn">Search</button>
-				</form>
-	  		</div> <!-- /.navbar-inner-->
-		</div> <!-- /.navbar -->
+		<div class="row-fluid">
+			<div class="span2 pagination-right">
+				<img class="logo" src="images/logo.png" alt="">
+			</div>
+			<div class="span10">
+				<!-- navbar -->
+				<div class="navbar">
+		  		<div class="navbar-inner">
+		    		<ul class="nav">
+		    			<li><a href="index.html">Home</a></li>
+		    			<li><a href="about.html">About</a></li>
+		    			<li class="dropdown">
+		    				<a href="events.html" class="dropdown-toggle" data-toggle="dropdown">Browse events<b class="caret"></b></a>
+		    				<ul class="dropdown-menu">
+		    					<li><a href="events.html">Browse all events</a></li>
+		    					<li><a href="#">Browse by date</a></li>
+		    					<li><a href="#">Browse by organization</a></li>
+		    				</ul> <!-- /.dropdown-menu -->
+		    			</li> <!-- /.dropdown -->
+		    			<li><a href="#addEventModal" data-toggle="modal">Add an event</a>
+		    		</ul> <!-- /.nav --> 
+					<!-- Search bar -->
+			  		<form class="navbar-search pull-right">
+			 			<input type="text" class="search-query" placeholder="Search events">
+			  			<button type="submit" class="btn">Search</button>
+					</form>
+		  		</div> <!-- /.navbar-inner-->
+				</div> <!-- /.navbar --> 
+			</div> <!-- /.span10 -->
+		</div> <!-- /.row-fluid -->
 		
 		<!-- modal -->
 		<div id="addEventModal" class="modal hide fade" tabindex="-1" role="dialog">
@@ -86,6 +87,7 @@
    				</div>
    				<div class="modal-body">
    					<input class="input-large" type="url" name="eventURL" placeholder="Event URL" required="required" />
+   					<p>Note: URL must be in the form http://www.facebook.com/events/123456789</p>
    				</div>
    				<div class="modal-footer">
    					<button class="btn" data-dismiss="modal">Cancel</button>
@@ -94,16 +96,19 @@
    			</form>
    		</div> <!-- /.modal -->
 
-   		<!-- info -->
+   		<h1>Why use EventDevil?</h1>
+
+   		<!-- info --><!-- 
    		<p><h1>It's easy.</h1></p> All you have to do is paste the URL of a public Facebook event. We'll handle the rest. You don't have to be a member of the organization hosting the event, and you don't have to fill out any long or complicated forms. </p>
 
    		<p><h1>It's comprehensive.</h1> Many events by students or student organizations aren't listed on the Duke Events Calendar or on most listservs. You shouldn't have to miss an event just because you or your friends weren't invited to the event on Facebook... or maybe you were invited to so many Facebook events that you started ignoring them.</p>
 
-   		<p><h1>It's social</h1></p> All of the events featured on our website are linked to a Facebook event, so you can quickly check to see which of your friends are inviting, or RSVP and then invite friends! </p>
+   		<p><h1>It's social</h1></p> All of the events featured on our website are linked to a Facebook event, so you can quickly check to see which of your friends are inviting, or RSVP and then invite friends! </p> -->
+
 
 
 		<!-- FAQ -->
-		<div class="faq">
+		<!-- <div class="faq">
 			<h1>FAQ</h1><hr>
 			<ul>
 				<li>
@@ -119,7 +124,7 @@
 					<p><strong>A:</strong> The featured events displayed on the homepage are the three events with the most attendees on Facebook. We show them to help you find popular events. </p>
 				</li>
 			</ul>
-		</div> <!-- /.faq -->
+		</div> --> <!-- /.faq -->
 
 
 		<!-- scripts -->
