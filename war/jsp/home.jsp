@@ -42,6 +42,22 @@
   			letter-spacing: -2px;
 		}
 
+		.hero-unit .left {
+			float: left;
+			width: 60%;
+			text-align: left;
+		}
+
+		.hero-unit .right {
+			float: right;
+			width: 40%;
+			text-align: right;
+		}
+
+		.hero-unit img {
+			max-height: 200px;
+		}
+
     	/* CUSTOMIZE FEATURED EVENTS PANEL */
 
     	.featured {
@@ -78,6 +94,8 @@
 			<div class="navbar">
 	  		<div class="navbar-inner">
 	    		<ul class="nav">
+					<li><a class="name">Event Devil</a></li>
+	  				<li class="divider-vertical"></li>
 	    			<li><a href="home.jsp">Home</a></li>
 	    			<li><a href="about.jsp">About</a></li>
 	    			<li class="dropdown">
@@ -130,6 +148,12 @@
 		<!-- carousel using hero -->
 		<div id="myCarousel" class="carousel slide">
 	      	<div class="carousel-inner">
+	      		<!-- <div class="item active">
+	      			<div class="hero-unit" style='height:200px;'>
+	      				<h2 class="left">Event Devil</h2>
+	      				<img src="../images/logo.png" alt="" class="right">
+	      			</div>
+	      		</div> -->
 	        	<div class="item active">
 	        		<div class="hero-unit">
 	        			<h2>Finding events should be fun, not frustrating.</h2>
@@ -137,7 +161,7 @@
 	        			<p>Tired of missing out on events or combing through incomplete listservs or the Duke Events Calendar? We're here to help you find and share events.</p>
 						<p><a class="btn btn-large btn-primary" href="about.jsp">Learn more</a></p>
 	        		</div> <!-- /.hero-unit -->
-	        	</div> <!-- /.item active-->
+	        	</div> <!-- /.item -->
 	        	<div class="item">
 	        		<div class="hero-unit">
 	        			<h2>Browsing is easy and intuitive.</h2>

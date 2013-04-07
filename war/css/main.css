@@ -29,9 +29,15 @@ body {
 }
 
 .navbar .nav li a {
-	padding: 10px 20px;
+	padding: 10px;
 	font-weight: 500;
 	font-size: 110%;
+}
+
+.navbar .nav .name,
+.navbar .nav .name:hover {
+	color: #0000c4;
+	text-transform: uppercase;
 }
 
 /* Customize the navigation bar dropdown menu */
