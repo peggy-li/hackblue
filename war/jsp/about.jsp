@@ -188,7 +188,7 @@
 					<p class="answer"><strong>A:</strong> You can submit any public Facebook events that are open to the entire Duke community and that are of interest to Duke students. Events should not have passed and should take place on campus or in the Durham / Triangle area. Any events that are found to be irrelevant to Duke students or that are offensive or in violation of copyright laws will be removed. </p>
 				
 					<p class="question"><strong>Q:</strong> Who can submit an event? Do I have to be the host or attending an event to submit it?</p>
-					<p class="answer"><strong>A:</strong> Nope! Anybody can submit an event as long as it meets the basic criteria described in above. You do not have to be a host or a member of the organization hosting the event, invited to, or planning to attend the event. </p>
+					<p class="answer"><strong>A:</strong> Nope! Anybody can submit an event as long as it meets the basic criteria described above. You do not have to be a host or a member of the organization hosting the event, invited to, or planning to attend the event. </p>
 				
 					<p class="question"><strong>Q:</strong> What are featured events?</p>
 					<p class="answer"><strong>A:</strong> The featured events displayed on the homepage are the events with the most attendees on Facebook. We show them to help you find popular events. </p>
