@@ -122,7 +122,9 @@ public class EventParser {
         event.setProperty("attending_count", tempSummary.getAttendingCount());
         
         // store tags
-        event.setProperty("tags", Arrays.asList(tags));
+        if (tags != null && tags.length > 0) {
+        	event.setProperty("tags", Arrays.asList(tags));
+        }
 
         return event;
 	}

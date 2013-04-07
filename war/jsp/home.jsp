@@ -182,8 +182,6 @@
 			</div> <!-- /.row -->
 		</div> <!-- /.featured -->
 
-
-
 		<!-- Modal for adding event -->
 		<div id="addEventModal" class="modal hide fade" tabindex="-1" role="dialog">
 			<form id="modal-form" name="modal-form" method="post" action="addEvent.jsp">
@@ -210,10 +208,16 @@
             					<input type="checkbox" name="tags[]" value="compsci" onchange='checkLen(this);'> Compsci
         					</label>
         					<label class="checkbox">
+            					<input type="checkbox" name="tags[]" value="fundraiser" onchange='checkLen(this);'> Fundraiser
+        					</label>
+        					<label class="checkbox">
             					<input type="checkbox" name="tags[]" value="sports" onchange='checkLen(this);'> Sports
         					</label>
     					</div> <!-- /.controls -->
     					<div class="controls span2">
+    					    <label class="checkbox">
+            					<input type="checkbox" name="tags[]" value="social" onchange='checkLen(this);'> Social
+        					</label>
         					<label class="checkbox">
             					<input type="checkbox" name="tags[]" value="dsg" onchange='checkLen(this);'> DSG
         					</label>
