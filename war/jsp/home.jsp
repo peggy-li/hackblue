@@ -103,7 +103,6 @@
 		    				<ul class="dropdown-menu">
 		    					<li><a href="events.jsp">Browse all events</a></li>
 		    					<li><a href="events.jsp?popular=true">Browse by popularity</a>
-		    					<li><a href="#">Browse by organization</a></li>
 		    					<li class="dropdown-submenu">
 		    						<a tabindex="-1" href="#">Browse by date</a>
 		    						<ul class="dropdown-menu">
