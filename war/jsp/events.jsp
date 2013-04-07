@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1" %>
-<%@ page import="java.util.List, extractor.EventExtractor, com.google.appengine.api.datastore.*" %>
+<%@ page import="java.util.List, java.util.ArrayList, extractor.EventExtractor, com.google.appengine.api.datastore.*" %>
 <%@ page session="false" %>
 
 <!DOCTYPE html>
@@ -83,6 +83,14 @@
 					}
 %>
 					<p class="location"><%=event.getProperty("location") %></p>
+					<p class="tags">Tags: 
+<%
+					ArrayList<String> allTags = (ArrayList<String>) event.getProperty("tags");
+					for (String tag : allTags) {
+						out.print("#" + tag + " ");
+					}
+%>
+					</p>
 				</div> <!-- /.right -->
 			</div> <!-- /.event -->
 <%
