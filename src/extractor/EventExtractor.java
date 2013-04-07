@@ -1,5 +1,7 @@
 package extractor;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -93,7 +95,19 @@ public class EventExtractor {
 	 */
 	private static boolean isInRange(String otherDate, int numWeeks) {
 		DateTimeFormatter fmt = DateTimeFormat.forPattern("yyyy-MM-dd");
-		DateTime dateTime1 = ISODateTimeFormat.dateTimeNoMillis().parseDateTime(otherDate);
+		DateTime dateTime1 = new DateTime();
+		if (otherDate.length()== 10){
+			SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+	       try {
+			dateTime1 =  new DateTime(formatter.parse(otherDate));
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		}
+		else{
+			 dateTime1 = ISODateTimeFormat.dateTimeNoMillis().parseDateTime(otherDate);	
+		}
 		DateTime dateTime2 = new DateTime(new Date());
 		dateTime2 = dateTime2.plusWeeks(numWeeks);
 		long d1 = dateTime1.getMillis();
@@ -102,7 +116,19 @@ public class EventExtractor {
 	}
 	
 	private static boolean isToday(String otherDate){
-		DateTime d1 = ISODateTimeFormat.dateTimeNoMillis().parseDateTime(otherDate);
+		DateTime d1 = new DateTime();
+		if (otherDate.length()== 10){
+			SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+	       try {
+			d1 =  new DateTime(formatter.parse(otherDate));
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		}
+		else{
+			 d1 = ISODateTimeFormat.dateTimeNoMillis().parseDateTime(otherDate);	
+		}
 		DateTime d2 = new DateTime(new Date());
 		return (d1.getDayOfYear() == d2.getDayOfYear() && d1.getYear()==d2.getYear());
 	}
@@ -116,7 +142,19 @@ public class EventExtractor {
 		if (iStart.equals(new String(""))){
 			return false;
 		}
-		DateTime start = ISODateTimeFormat.dateTimeNoMillis().parseDateTime(iStart);
+		DateTime start = new DateTime();
+		if (iStart.length()== 10){
+			SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+	       try {
+			start =  new DateTime(formatter.parse(iStart));
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		}
+		else{
+		start = ISODateTimeFormat.dateTimeNoMillis().parseDateTime(iStart);
+		}
 		DateTime d2 = new DateTime(new Date());
 		boolean condition2 = false;
 		DateTime end;
