@@ -46,12 +46,30 @@
                     <a tabindex="-1" href="#">Browse by date</a>
                     <ul class="dropdown-menu">
                       <li><a tabindex="-1" href="#">Today</a></li>
-                      <li><a tabindex="-1" href="#">Within 1 week</a></li>
-                      <li><a tabindex="-1" href="#">Within 2 weeks</a></li>
-                      <li><a tabindex="-1" href="#">After 2 weeks</a></li>
+                     <li><a tabindex="-1" href="events.jsp?upcomingWeeks=1">Within 1 week</a></li>
+		    		<li><a tabindex="-1" href="events.jsp?upcomingWeeks=2">Within 2 weeks</a></li>
+		    		<li><a tabindex="-1" href="events.jsp?upcomingWeeks=5">Within 5 weeks</a></li>
                     </ul>
                   </li><!--/.dropdown-submenu for date -->
                   <li><a href="#">Browse by organization</a></li>
+                  <!-- tags dropdown submenu -->
+                  <li class="dropdown-submenu">
+                    <a tabindex="-1" href="#">Browse by tag</a>
+                    <ul class="dropdown-menu">
+                      <li><a tabindex="-1" href="#">academics</a></li>
+                      <li><a tabindex="-1" href="#">arts</a></li>
+                      <li><a tabindex="-1" href="#">career</a></li>
+                      <li><a tabindex="-1" href="#">compsci</a></li>
+                      <li><a tabindex="-1" href="#">fundraiser</a></li>
+                      <li><a tabindex="-1" href="#">sports</a></li>
+                      <li><a tabindex="-1" href="#">social</a></li>
+                      <li><a tabindex="-1" href="#">dsg</a></li>
+                      <li><a tabindex="-1" href="#">freshmen</a></li>
+                      <li><a tabindex="-1" href="#">sophomores</a></li>
+                      <li><a tabindex="-1" href="#">juniors</a></li>
+                      <li><a tabindex="-1" href="#">seniors</a></li>
+                    </ul>
+                  </li><!--/.dropdown-submenu for tags -->
                 </ul> <!-- /.dropdown-menu -->
               </li> <!-- /.dropdown -->
               <li><a href="#addEventModal" data-toggle="modal">Add an event</a>
@@ -68,7 +86,16 @@
 
 		<div class="container">
 <%		
-			List<Entity> events = EventExtractor.retrieve();
+			List<Entity> events;
+			// checking for timeframe
+			String numWeeks = (request.getParameter("upcomingWeeks"));
+			if (numWeeks == null){
+				events = EventExtractor.retrieve();
+			}
+			else{
+				int tempWeeks = Integer.parseInt(numWeeks);
+				events = EventExtractor.findUpcoming(tempWeeks);
+			}
 			if (events.isEmpty()) {
 				out.print("<p>No events found.</p>");
 			}

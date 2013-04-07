@@ -5,6 +5,7 @@ import java.util.Date;
 import java.util.List;
 
 import org.joda.time.DateTime;
+import org.joda.time.LocalDate;
 import org.joda.time.format.DateTimeFormat;
 import org.joda.time.format.DateTimeFormatter;
 import org.joda.time.format.ISODateTimeFormat;
@@ -73,10 +74,12 @@ public class EventExtractor {
 	 */
 	private static boolean isInRange(String otherDate, int numWeeks){
 		DateTimeFormatter fmt = DateTimeFormat.forPattern("yyyy-MM-dd");
-		DateTime dateTime1 = fmt.parseDateTime(otherDate);
-		DateTime dateTime2 = fmt.parseDateTime(new Date().toString());
-		dateTime2.plusWeeks(numWeeks);
-		return (dateTime1.isBefore(dateTime2));
+		DateTime dateTime1 = ISODateTimeFormat.dateTimeNoMillis().parseDateTime(otherDate);
+		DateTime dateTime2 = new DateTime(new Date());
+		dateTime2 = dateTime2.plusWeeks(numWeeks);
+		long d1 = dateTime1.getMillis();
+		long d2 = dateTime2.getMillis();
+		return (d1 < d2);
 	}
 	
 }
