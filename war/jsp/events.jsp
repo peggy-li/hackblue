@@ -21,46 +21,6 @@
     		position: relative;
     	}
 
-    	/* CUSTOMIZE EACH EVENT OBJECT */
-
-    	.event {
-    		margin-top: 40px;
-    	}
-
-    	.event img {
-    		width: 200px;
-    		height: 200px;
-    		text-align: left;
-    	}
-
-    	.event .name {
-    		font-size: 180%;
-    	}
-
-    	.event .host {
-    		font-size: 120%;
-    		margin-bottom: 20px;
-    	}
-
-    	.event .date {
-    		font-size: 120%;
-    	}
-
-    	.event .location {
-    		font-size: 120%;
-    	}
-
-    	.event .left {
-    		float: left;
-    		width: 42%;
-    		text-align: center;
-    	}
-
-    	.event .right{
-    		float: right;
-    		width: 58%
-    	}
-
 		</style>
 	</head>
 
@@ -76,10 +36,10 @@
         <div class="navbar">
           <div class="navbar-inner">
             <ul class="nav">
-              <li><a href="../index.html">Home</a></li>
-              <li><a href="../about.html">About</a></li>
+              <li><a href="home.jsp">Home</a></li>
+              <li><a href="about.jsp">About</a></li>
               <li class="dropdown">
-                <a href="events.html" class="dropdown-toggle" data-toggle="dropdown">Browse events<b class="caret"></b></a>
+                <a class="dropdown-toggle" data-toggle="dropdown">Browse events<b class="caret"></b></a>
                 <ul class="dropdown-menu">
                   <li><a href="events.jsp">Browse all events</a></li>
                   <li><a href="#">Browse by date</a></li>
@@ -99,7 +59,6 @@
     </div> <!-- /.row-fluid -->
 
 		<div class="container">
-		
 <%		
 			List<Entity> events = EventExtractor.retrieve();
 			if (events.isEmpty()) {
@@ -130,10 +89,10 @@
 			}
 %>
  		</div> <!-- /.container -->
- 		
+
  		<!-- Modal for adding event -->
 		<div id="addEventModal" class="modal hide fade" tabindex="-1" role="dialog">
-			<form id="modal-form" method="post" action="../jsp/addEvent.jsp">
+			<form id="modal-form" method="post" action="addEvent.jsp">
 				<div class="modal-header">
    					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
    					<h3>Add Event</h3>
@@ -149,8 +108,14 @@
    			</form>
    		</div> <!-- /.modal -->
 
+        <!-- Footer -->
+        <div class="footer">
+            <p class="pagination-centered">Note: this website is best viewed using Google Chrome.</p>
+            <p class="muted pagination-centered">EventDevil &copy; 2013 Peggy Li, Eric Mercer, &amp; Michael Hsueh</p>
+        </div><!-- /.footer -->
+
 		<script src="../js/jquery.js"></script>
     	<script src="../js/bootstrap.js"></script>
-   	<script src="../js/holder.js"></script>
+   	    <script src="../js/holder.js"></script>
 	</body>
 </html>

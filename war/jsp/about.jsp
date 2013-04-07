@@ -5,8 +5,8 @@
 		<title>EventDevil - About</title>
 
 		<!-- styles -->
-		<link href="css/bootstrap.css" rel="stylesheet">
-   		<link href="css/main.css" rel="stylesheet">
+		<link href="../css/bootstrap.css" rel="stylesheet">
+   		<link href="../css/main.css" rel="stylesheet">
 
    		<style>
 
@@ -22,19 +22,19 @@
 	<body>
 		<div class="row-fluid">
 			<div class="span2 pagination-right">
-				<img class="logo" src="images/logo.png" alt="">
+				<img class="logo" src="../images/logo.png" alt="">
 			</div>
 			<div class="span10">
 				<!-- navbar -->
 				<div class="navbar">
 		  		<div class="navbar-inner">
 		    		<ul class="nav">
-		    			<li><a href="index.html">Home</a></li>
-		    			<li><a href="about.html">About</a></li>
+		    			<li><a href="home.jsp">Home</a></li>
+		    			<li><a href="about.jsp">About</a></li>
 		    			<li class="dropdown">
-		    				<a href="events.html" class="dropdown-toggle" data-toggle="dropdown">Browse events<b class="caret"></b></a>
+		    				<a class="dropdown-toggle" data-toggle="dropdown">Browse events<b class="caret"></b></a>
 		    				<ul class="dropdown-menu">
-		    					<li><a href="events.html">Browse all events</a></li>
+		    					<li><a href="events.jsp">Browse all events</a></li>
 		    					<li><a href="#">Browse by date</a></li>
 		    					<li><a href="#">Browse by organization</a></li>
 		    				</ul> <!-- /.dropdown-menu -->
@@ -53,7 +53,7 @@
 		
 		<!-- modal -->
 		<div id="addEventModal" class="modal hide fade" tabindex="-1" role="dialog">
-			<form id="modal-form" method="post" action="jsp/addEvent.jsp">
+			<form id="modal-form" method="post" action="addEvent.jsp">
 				<div class="modal-header">
    					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
    					<h3>Add Event</h3>
@@ -103,9 +103,9 @@
    		</div><!-- /.footer -->
 
 		<!-- scripts -->
-		<script src="js/jquery.js"></script>
-		<script src="js/bootstrap.js"></script>
-	   	<script src="js/holder.js"></script>
+		<script src="../js/jquery.js"></script>
+		<script src="../js/bootstrap.js"></script>
+	   	<script src="../js/holder.js"></script>
 	   	<script>
 	      	!function ($) {
 	        $(function(){

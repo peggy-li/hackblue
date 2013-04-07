@@ -1,3 +1,7 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1" %>
+<%@ page import="java.util.List, extractor.EventExtractor, com.google.appengine.api.datastore.*" %>
+<%@ page session="false" %>
+
 <!DOCTYPE html>
 <html lang="en">
 	<head>
@@ -5,8 +9,8 @@
 		<title>EventDevil</title>
 
 		<!-- styles -->
-		<link href="css/bootstrap.css" rel="stylesheet">
-    	<link href="css/main.css" rel="stylesheet">
+		<link href="../css/bootstrap.css" rel="stylesheet">
+    	<link href="../css/main.css" rel="stylesheet">
 		<style>
 
     	/* CUSTOMIZE THE CAROUSEL */
@@ -49,7 +53,7 @@
     		height: 200px;
     	}
 
-    	.featured .span4 {
+    	.featured .span3 {
     		position: block;
     	}
 
@@ -64,19 +68,19 @@
 	<body>
 		<div class="row-fluid">
 			<div class="span2 pagination-right">
-				<img class="logo" src="images/logo.png" alt="">
+				<img class="logo" src="../images/logo.png" alt="">
 			</div>
 			<div class="span10">
 				<!-- navbar -->
 				<div class="navbar">
 		  		<div class="navbar-inner">
 		    		<ul class="nav">
-		    			<li><a href="index.html">Home</a></li>
-		    			<li><a href="about.html">About</a></li>
+		    			<li><a href="home.jsp">Home</a></li>
+		    			<li><a href="about.jsp">About</a></li>
 		    			<li class="dropdown">
-		    				<a href="events.html" class="dropdown-toggle" data-toggle="dropdown">Browse events<b class="caret"></b></a>
+		    				<a href="events.jsp" class="dropdown-toggle" data-toggle="dropdown">Browse events<b class="caret"></b></a>
 		    				<ul class="dropdown-menu">
-		    					<li><a href="events.html">Browse all events</a></li>
+		    					<li><a href="events.jsp">Browse all events</a></li>
 		    					<li><a href="#">Browse by date</a></li>
 		    					<li><a href="#">Browse by organization</a></li>
 		    				</ul> <!-- /.dropdown-menu -->
@@ -100,14 +104,14 @@
 	        		<div class="hero-unit">
 	        			<h2>Finding events should be fun, not frustrating.</h2>
 	        			<p>EventDevil makes it easy to find events on Facebook.</p>
-						<p><a class="btn btn-large btn-primary" href="about.html">Learn more</a></p>
+						<p><a class="btn btn-large btn-primary" href="about.jsp">Learn more</a></p>
 	        		</div> <!-- /.hero-unit -->
 	        	</div> <!-- /.item active-->
 	        	<div class="item">
 	        		<div class="hero-unit">
 	        			<h2>Browsing is fun and easy!</h2>
 	        			<p>Search for upcoming events or filter events by organization name.</p>
-	        			<p><a href="events.html" class="btn btn-large btn-primary">Browse now</a></p>
+	        			<p><a href="events.jsp" class="btn btn-large btn-primary">Browse now</a></p>
 	        		</div> <!-- /.hero-unit -->
 	        	</div> <!-- /.item -->
 	        	<div class="item">
@@ -127,25 +131,18 @@
 		<div class="featured">
 			<h1 class="text-left">Featured events</h1><hr>
 			<div class="row-fluid">
+<%
+				List<Entity> events = EventExtractor.retrieve("attending_count", "descending", 4);
+				for (Entity event: events){
+%>
 	 		 	<div class="span3">
-	 		 		<img data-src="holder.js/200x200" alt="" class="img-polaroid">
-	 		 		<p class="caption">First event goes here</p>
-	 		 	</div> <!-- first event -->
-	  		
-		  		<div class="span3">
-		  			<img data-src="holder.js/200x200" alt="" class="img-polaroid">
-		  			<p class="caption">Second event goes here</p>
-		  		</div> <!-- second event -->
-		  		
-		  		<div class="span3">
-		  			<img data-src="holder.js/200x200" alt="" class="img-polaroid">
-		  			<p class="caption">Third event goes here</p>
-		  		</div> <!-- third event -->
+	 		 		<img src=<%=event.getProperty("picture") %> class="img-polaroid">
+	 		 		<p><a href=<%=event.getProperty("url") %>><%=event.getProperty("name") %></a></p>
+	 		 	</div> <!-- event -->
 
-		  		<div class="span3">
-		  			<img data-src="holder.js/200x200" alt="" class="img-polaroid">
-		  			<p class="caption">Fourth event goes here</p>
-		  		</div>
+<%
+			  	}
+%>	
 			</div> <!-- /.row -->
 		</div> <!-- /.featured -->
 
@@ -153,7 +150,7 @@
 
 		<!-- Modal for adding event -->
 		<div id="addEventModal" class="modal hide fade" tabindex="-1" role="dialog">
-			<form id="modal-form" method="post" action="jsp/addEvent.jsp">
+			<form id="modal-form" method="post" action="addEvent.jsp">
 				<div class="modal-header">
    					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
    					<h3>Add Event</h3>
@@ -177,9 +174,9 @@
    		</div><!-- /.footer -->
 
 	<!-- scripts -->
-	<script src="js/jquery.js"></script>
-	<script src="js/bootstrap.js"></script>
-   	<script src="js/holder.js"></script>
+	<script src="../js/jquery.js"></script>
+	<script src="../js/bootstrap.js"></script>
+   	<script src="../js/holder.js"></script>
    	<script>
       	!function ($) {
         $(function(){
