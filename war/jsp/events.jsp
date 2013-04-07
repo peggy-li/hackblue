@@ -118,7 +118,8 @@
 			}
 			for (Entity event : events) {
 				// don't display old events
-				if (!event.getProperty("end_time").equals(new String(""))) {
+				String endTime = (String) event.getProperty("end_time");
+				if (!endTime.equals("") && endTime.length() == 21) {
 					DateTime d2 = ISODateTimeFormat.dateTimeNoMillis().parseDateTime((String) event.getProperty("end_time"));
 					DateTime d1 = new DateTime(new Date());
 					if (d1.getMillis() > d2.getMillis()) {
@@ -135,7 +136,7 @@
 					<p class="host">Created by: <%=event.getProperty("owner") %></p>
 					<p class="date"><%=EventExtractor.formatDate((String) event.getProperty("start_time")) %>
 <%
-					if (!((String) event.getProperty("end_time")).equals("")) {
+					if (!endTime.equals("") && endTime.length() == 21) {
 						out.print(" - " + EventExtractor.formatDate((String) event.getProperty("end_time")) + "</p>");
 					}
 					else {
