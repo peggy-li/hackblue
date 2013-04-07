@@ -36,6 +36,8 @@
 				<div class="navbar">
 		  		<div class="navbar-inner">
 		    		<ul class="nav">
+                        <li><a class="name">Event Devil</a></li>
+                        <li class="divider-vertical"></li>
 		    			<li><a href="home.jsp">Home</a></li>
 		    			<li><a href="about.jsp">About</a></li>
 		    			<li class="dropdown">
