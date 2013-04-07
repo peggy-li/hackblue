@@ -4,7 +4,7 @@
 Languages:  
     Java, JSP, HTML, CSS, JavaScript  
 Libraries/APIs:  
-    Facebook Graph API, GSON, Bootstrap  
+    Facebook Graph API, GSON, JODA, Bootstrap  
 Web Deployment:  
     Google App Engine  
 Tools:  
