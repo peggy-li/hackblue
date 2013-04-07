@@ -84,17 +84,23 @@
       </div> <!-- /.span10 -->
     </div> <!-- /.row-fluid -->
 
+
 		<div class="container">
 <%		
 			List<Entity> events;
-			// checking for timeframe
-			String numWeeks = (request.getParameter("upcomingWeeks"));
-			if (numWeeks == null){
-				events = EventExtractor.retrieve();
-			}
-			else{
+			
+           	// checking for parameters
+			String numWeeks = request.getParameter("upcomingWeeks");
+           	String tag = request.getParameter("tag");
+			if (numWeeks != null){
 				int tempWeeks = Integer.parseInt(numWeeks);
 				events = EventExtractor.findUpcoming(tempWeeks);
+			}
+			else if (tag != null) {
+				events = EventExtractor.filter("tags", tag, "ascending", 50);
+			}
+			else {
+				events = EventExtractor.retrieve("start_time", "ascending", 50);
 			}
 			if (events.isEmpty()) {
 				out.print("<p>No events found.</p>");
@@ -138,8 +144,8 @@
 					if (obj != null) {
 						ArrayList<String> allTags = (ArrayList<String>) obj;
 						out.print("Tags: ");
-						for (String tag : allTags) {
-							out.print("<a href='#'>#" + tag + "</a> ");
+						for (String t : allTags) {
+							out.print("<a href='#'>#" + t + "</a> ");
 						}
 					}
 %>

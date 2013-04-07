@@ -2,6 +2,7 @@
 <%@ page import="java.util.List, extractor.EventExtractor, com.google.appengine.api.datastore.*" %>
 <%@ page session="false" %>
 
+
 <!DOCTYPE html>
 <html lang="en">
 	<head>
@@ -104,6 +105,7 @@
 				</div> <!-- /.navbar --> 
 			</div> <!-- /.span10 -->
 		</div> <!-- /.row-fluid -->
+
 
 		<!-- carousel using hero -->
 		<div id="myCarousel" class="carousel slide">
