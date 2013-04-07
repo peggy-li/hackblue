@@ -137,7 +137,7 @@
 	        	<div class="item">
 	        		<div class="hero-unit">
 	        			<h2>Browsing is easy and intuitive.</h2>
-	        			<p>Search for upcoming events by time range, filter events by organization name, or search for events by keyword.</p>
+	        			<p>Search for upcoming events by time range and filter events by organization name or by event tag. Get results that show you an overview of the event with a link to RSVP on Facebook.</p>
 	        			<p><a href="events.jsp" class="btn btn-large btn-primary">Browse now</a></p>
 	        		</div> <!-- /.hero-unit -->
 	        	</div> <!-- /.item -->
