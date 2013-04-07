@@ -111,21 +111,23 @@
 	        	<div class="item active">
 	        		<div class="hero-unit">
 	        			<h2>Finding events should be fun, not frustrating.</h2>
-	        			<p>EventDevil makes it easy to find events on Facebook.</p>
+	        			<!-- <p>EventDevil makes it easy to share and find events.</p> -->
+	        			<p>Tired of missing out on events or combing through incomplete listservs or the Duke Events Calendar? We're here to help you find and share events.</p>
 						<p><a class="btn btn-large btn-primary" href="about.jsp">Learn more</a></p>
 	        		</div> <!-- /.hero-unit -->
 	        	</div> <!-- /.item active-->
 	        	<div class="item">
 	        		<div class="hero-unit">
-	        			<h2>Browsing is fun and easy!</h2>
-	        			<p>Search for upcoming events or filter events by organization name.</p>
+	        			<h2>Browsing is easy and intuitive.</h2>
+	        			<p>Search for upcoming events by time range, filter events by organization name, or search for events by keyword.</p>
 	        			<p><a href="events.jsp" class="btn btn-large btn-primary">Browse now</a></p>
 	        		</div> <!-- /.hero-unit -->
 	        	</div> <!-- /.item -->
 	        	<div class="item">
 	        		<div class="hero-unit">
-	        			<h2>Your contributions matter.</h2>
-	        			<p>Our success depends on our users submitting events. By submitting an event to our database, you have the chance to share it with many more people.</p>
+	        			<h2>We place you at the center of the event.</h2>
+	        			<!-- <p>Our success depends on our users submitting events. By submitting an event to our database, you have the chance to share it with many more people.</p> -->
+	        			<p>You submit events that you think other people would be interested in, and you find and attend events that others share. Call it crowdsourcing, call it amazing.</p>
 	        			<p><a href="#addEventModal" class="btn btn-large btn-primary" data-toggle="modal">Add an event now</a></p>
 	        		</div>
 	        	</div>
