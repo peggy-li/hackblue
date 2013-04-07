@@ -19,25 +19,25 @@ We know from experience that there&apos;s always a lot happening on campus and n
 
 We also know that it&apos;s hard for organizations to advertise their events to a large number of students without &ldquo;spamming&rdquo; them on Facebook or by email, and we believe that our platform can help.
 
+---------------------------------------
+
 ###Software Stack###
-Languages:
+__Languages__:
 * Java
 * JSP
 * HTML
 * CSS
 * JavaScript
-
-Libraries/APIs:
+__Libraries/APIs__:
 * Facebook Graph API
 * Facebook Query Language (FQL)
 * GSON
 * JODA
 * Bootstrap
-
-Web Deployment:
+* jQuery
+__Web Deployment__:
 * Google App Engine
-
-Tools:
+__Tools__:
 * Eclipse
 * Sublime Text 2
 * git
