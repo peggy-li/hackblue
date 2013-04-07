@@ -135,7 +135,7 @@
 					<p class="host">Created by: <%=event.getProperty("owner") %></p>
 					<p class="date"><%=EventExtractor.formatDate((String) event.getProperty("start_time")) %>
 <%
-					if (!event.getProperty("end_time").equals(new String(""))) {
+					if (!((String) event.getProperty("end_time")).equals("")) {
 						out.print(" - " + EventExtractor.formatDate((String) event.getProperty("end_time")) + "</p>");
 					}
 					else {
