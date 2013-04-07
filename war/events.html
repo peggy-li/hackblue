@@ -22,6 +22,29 @@
     		position: relative;
     	}
 
+    	/* CUSTOMIZE THE NAVIGATION BAR */
+
+		.navbar{
+			margin: 0 15px;
+			padding: 10px 0;
+		}    
+
+		.navbar .nav li {
+			padding: 2px;
+		}
+
+		.navbar .nav li a {
+			padding: 10px 20px;
+			font-weight: 500;
+			font-size: 110%;
+		}
+
+    	/* Customize the navigation bar dropdown menu */
+
+    	.dropdown-menu li a {
+    		padding: 4px 20px;
+    	}
+
     	/* CUSTOMIZE EACH EVENT OBJECT */
 
     	.event {
@@ -70,6 +93,31 @@
 
 	<body>
 
+		<!-- navbar -->
+		<div class="navbar">
+	  		<div class="navbar-inner">
+	    		<ul class="nav">
+	    			<li><a href="index.html">Home</a></li>
+	    			<li><a href="about.html">About</a></li>
+	    			<li class="dropdown">
+	    				<!-- <a href="events.html" class="dropdown-toggle" data-toggle="dropdown">Browse Events</a> -->
+	    				<a href="events.html" class="dropdown-toggle" data-toggle="dropdown">Browse events<b class="caret"></b></a>
+	    				<ul class="dropdown-menu">
+	    					<li><a href="events.html">Browse all events</a></li>
+	    					<li><a href="#">Browse by date</a></li>
+	    					<li><a href="#">Browse by organization</a></li>
+	    				</ul> <!-- /.dropdown-menu -->
+	    			</li> <!-- /.dropdown -->
+	    			<li><a href="#addEventModal" data-toggle="modal">Add an event</a>
+	    		</ul> <!-- /.nav --> 
+				<!-- Search bar -->
+		  		<form class="navbar-search pull-right">
+		 			<input type="text" class="search-query" placeholder="Search events">
+		  			<button type="submit" class="btn">Search</button>
+				</form>
+	  		</div> <!-- /.navbar-inner-->
+		</div> <!-- /.navbar -->
+
 		<div class="container">
 			<div class="event row-fluid">
 				<div class="left">
@@ -83,6 +131,24 @@
 				</div> <!-- /.right -->
 			</div> <!-- /.event -->
  		</div> <!-- /.container -->
+
+
+ 		<!-- Modal for adding event -->
+		<div id="addEventModal" class="modal hide fade" tabindex="-1" role="dialog">
+			<form id="modal-form" method="post" action="jsp/addEvent.jsp">
+				<div class="modal-header">
+   					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+   					<h3>Add Event</h3>
+   				</div>
+   				<div class="modal-body">
+   					<input class="input-large" type="url" name="eventURL" placeholder="Event URL" required="required" />
+   				</div>
+   				<div class="modal-footer">
+   					<button class="btn" data-dismiss="modal">Cancel</button>
+   					<input class="btn btn-primary" type="submit" value="Add Event"/>
+   				</div>
+   			</form>
+   		</div> <!-- /.modal -->
 
 		<script src="js/jquery.js"></script>
     	<script src="js/bootstrap.js"></script>
