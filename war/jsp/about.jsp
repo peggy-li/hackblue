@@ -11,8 +11,22 @@
    		<style>
 
 	    	/* CUSTOMIZE INFO SECTION AT TOP */
+	    	.reason-container {
+	    		margin-left: 200px;
+	    	}
 	    	.reason p {
 	    		margin-bottom: 20px;
+	    		text-align: justify;
+	    	}
+
+	    	.reason .left {
+	    		width: 500px;
+	    		float: left;
+	    	}
+
+	    	.reason .right {
+	    		width: 500px;
+	    		float: right;
 	    	}
 
 
@@ -143,14 +157,17 @@
    			</form>
    		</div> <!-- /.modal -->
 
+   		<div class="reason-container">
 
-   		<div class="reason pagination-left"><h2>It's easy.</h2> <p>All you have to do is paste the URL of a public Facebook event. We'll handle the rest. No long or complicated forms!</p> <p>Our browsing is simple and intuitive, allowing you to search and filter by criteria that matter to you. </p> </div>
+   		<div class="reason left"><h2>It's easy.</h2> <p>All you have to do is paste the URL of a public Facebook event. We'll handle the rest. No long or complicated forms!</p> <p>Our browsing is simple and intuitive, allowing you to search and filter by criteria that matter to you. </p> </div>
 
-   		<div class="reason pagination-right"><h2>It's comprehensive.</h2> <p>The Duke Events Calendar, the largest aggregation of events at Duke, doesn't include many events organized by students or student organizations and includes many events that are generally not of great interest to students. Email listservs usually include only a small number of events specific to the group or have long blocks of text that most students don't want to read.</p> <p>At the same time, you might be inundated with event invitations on Facebook, some of which are to events you aren't really interested in, while missing out on events you aren't invited to or you don't see your friends RSVP to. It doesn't have to be that way. Why settle when you could have a large database of events for students, by students?</div>
+   		<div class="reason right pagination-right"><h2>It's comprehensive.</h2> <p>The Duke Events Calendar, the largest aggregation of events at Duke, doesn't include many events organized by students or student organizations and includes many events that are generally not of great interest to students. Email listservs usually include only a small number of events specific to the group or have long blocks of text that most students don't want to read.</p> <p>At the same time, you might be inundated with event invitations on Facebook, some of which are to events you aren't really interested in, while missing out on events you aren't invited to or you don't see your friends RSVP to. It doesn't have to be that way. Why settle when you could have a large database of events for students, by students?</div>
 
-   		<div class="reason pagination-left"><h2>It's social.</h2><p>Because each of the events shown links to a Facebook event, you can quickly see which of your friends are attending or invite your friends after you RSVP. </p></div>
+   		<div class="reason left"><h2>It's social.</h2><p>Because each of the events shown links to a Facebook event, you can quickly see which of your friends are attending or invite your friends after you RSVP. </p></div>
 
-   		<div class="reason pagination-right"><h2>It's by Duke students, for Duke students.</h2> <p>We know from experience that there's always a lot happening on campus and not enough time to do it all. That's why we want to help you find the events that matter the most to you and that most interest you, so you're making the most of your time (or finding more things to go to so you can procrastinate). </p><p>We also know that it's hard for organizations to advertise their events to a large number of students without "spamming" them on Facebook or by email, and we believe that our platform can help. </div>
+   		<div class="reason right pagination-right"><h2>It's by Duke students, for Duke students.</h2> <p>We know from experience that there's always a lot happening on campus and not enough time to do it all. That's why we want to help you find the events that matter the most to you and that most interest you, so you're making the most of your time (or finding more things to go to so you can procrastinate). </p><p>We also know that it's hard for organizations to advertise their events to a large number of students without "spamming" them on Facebook or by email, and we believe that our platform can help. </div>
+
+   		</div>
 
    		<hr>
 
