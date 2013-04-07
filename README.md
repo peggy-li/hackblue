@@ -8,5 +8,5 @@ Libraries/APIs:
 Web Deployment:  
     Google App Engine  
 Tools:  
-    Eclipse, git, Chrome  
+    Eclipse, Sublime Text 2, git, GitHub, Chrome  
 
