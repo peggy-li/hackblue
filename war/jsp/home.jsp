@@ -97,7 +97,8 @@
 		    		</ul> <!-- /.nav --> 
 					<!-- Search bar -->
 			  		<form class="navbar-search pull-right">
-			 			<input type="text" class="search-query" placeholder="Search events">
+			 			<input type="text" class="search-query" autocomplete="off" data-provide="typeahead" placeholder="Search tags"
+			 				data-source='["academic", "arts", "career", "compsci", "fundraiser", "sports", "social", "dsg", "freshmen", "sophomores", "juniors", "seniors"]'>
 			  			<button type="submit" class="btn">Search</button>
 					</form>
 		  		</div> <!-- /.navbar-inner-->
